@@ -1,2 +1,107 @@
-<h1>Products#top</h1>
-<p>Find me in app/views/products/top.html.erb</p>
+<head>
+	<title>Top</title>
+	<link rel="stylesheet" href="assets/skippr.css">
+</head>
+
+<style>
+
+	main {
+		width: 1400px;
+		height: 810px;
+		margin: 0 auto;
+	}
+
+	.main-content {
+		width: 1400px;
+		height: 400px;
+	}
+	.slide {
+		border: 2px solid;
+		border-radius: 25px;
+	}
+	.main-about {
+		width: 1400px;
+		height: 400px;
+		background-image: url(/assets/cookie3-cd19a5fa42ed9fe8c98c228036aebc5436910ff68c6fd384ee5c989226c742e0.jpg);
+		background-position: center;
+		background-size: cover;
+		display: flex;
+		align-items: center;
+		background-color: pink;
+		border: 2px solid;
+		border-radius: 25px;
+		margin: 4px;
+	}
+	.about-text {
+		text-align: center;
+		flex: 1;
+	}
+
+	.about-text {
+		font-family: Georgia, serif;
+		font-size: 20px;
+		color: white;
+	}
+
+	footer {
+		width: 100%;
+		height: 100px;
+		background-color: gray;
+	}
+	.footer-text{
+		line-height: 100px;
+		text-align: center;
+	}
+</style>
+<header>
+<nav class="navbar navbar-inverse">
+	<div class="container">
+		<nav class="nav navbar-nav navbar-left">
+          <span class="logo" style="color: pink;">EC_site(LOGO)</span>
+        </nav>
+	<ul class="nav navbar-nav navbar-right">
+		<li>
+			<%= link_to "商品一覧",'#', class:'border' %>
+		</li>
+		<li>
+			<%= link_to 'カート','#', class:'border' %>
+		</li>
+		<li>
+			<%= link_to 'ユーザー名','#', class:'border' %>
+		</li>
+		<li>
+			<%= link_to "ログアウト",'#', class:'border' %>
+		</li>
+	</ul>
+	</div>
+</nav>
+</header>
+
+<main>
+<div class="container main-content">
+	<div class="slide">
+		<div style="background-image: url(/assets/cake_1-a056609c43adf35edca71c1c8addb8cff7a557b45473bcd0832a673313f4d41d.jpg); background-position: top;">
+		</div>
+		<div style="background-image: url(/assets/cookie3-cd19a5fa42ed9fe8c98c228036aebc5436910ff68c6fd384ee5c989226c742e0.jpg); background-position: top;">
+		</div>
+		<div style="background-image: url(/assets/cake_2-24d58f896eea0fd9704d2e21eb7ab56f82ba4206d34ef971ee8beaa8965eef43.jpg); background-size: cover;">
+		</div>
+	</div>
+</div>
+
+<div class="main-about">
+		<p class="about-text">長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト<br>
+		注文を受けてからの製造の為、フレッシュな商品をお届けします。
+		</p>
+</div>
+</main>
+
+<footer>
+	<div class="footer-text">
+        <p>copyright ながのCAKE</p>
+     </div>
+</footer>
+
+<script src="javascripts/jquery.min.js"></script>
+<script src="javascripts/skippr.min.js"></script>
+<script src="javascripts/script.js"></script>

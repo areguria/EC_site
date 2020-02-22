@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-
-  devise_for :customers
   devise_for :admins
-
+  devise_for :customers
   resources :customers,only:[:show,:update,:edit]
   get 'customers/confirm'
 

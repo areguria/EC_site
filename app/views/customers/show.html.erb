@@ -1,9 +1,9 @@
 <h2>マイページ</h2>
-<h4>登録情報</h4>
-<%=link_to "編集する",'#',class:"btn btn-primary" %>
-<%=link_to "パスワードを変更する","#",class:"btn btn-primary" %>
-
-<table>
+<h3>登録情報
+<%= link_to "編集する", '#', class: "btn-square" %>
+<%= link_to "パスワードを変更する", '#', class: "btn-square" %>
+</h3>
+<table class="table table-bordered">
 	<tr>
 		<th>氏名</th>
 		<td>山田花子</td>
@@ -31,7 +31,9 @@
 </table>
 
 
-<h4>配送先</h4>
-<%=link_to "一覧を見る",'#',class:"btn btn-primary" %>
-<h4>注文履歴</h4>
-<%=link_to "一覧を見る",'#',class:"btn btn-primary" %>
+<h3>配送先
+<%= link_to "一覧を見る", '#', class: "btn-square" %>
+</h3>
+<h3>注文履歴
+<%= link_to "一覧を見る", '#', class: "btn-square" %>
+</h3>

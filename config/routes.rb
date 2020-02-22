@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :customers
+  get 'products/index'
+  devise_for :admins, controllers: {
+  	sessions:      'admins/sessions',
+  	passwords:     'admins/passwords',
+  	registrations: 'admins/registrations'
+  }
+  devise_for :customers, controllers: {
+  	sessions:      'customers/sessions',
+  	passwords:     'customers/passwords',
+  	registrations: 'customers/registrations'
+  }
+
+  resources :products, only: [:index, :show]
+  namespace :admin do
+  resources :products, only: [:index, :new, :create, :show, :edit, :destroy]
+end
   resources :customers,only:[:show,:update,:edit]
   get 'customers/confirm'
 

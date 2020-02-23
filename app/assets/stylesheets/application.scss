@@ -17,3 +17,29 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/*cart*/
+
+.delete-bottun{
+    width:30px;
+	margin:0 0 0 auto;
+	margin-right:110px;
+}
+
+.cart-image{
+  background-image: url(cake_2.jpg);
+  width:70px;
+  height:40px;
+  float:left;
+}
+
+.cart-table{
+	width:90%;
+}
+.cart-table2{
+	width:30%;
+	margin:0 0 0 auto;
+}
+.go-bottun{
+    width:50px;
+	margin:0 auto;
+}

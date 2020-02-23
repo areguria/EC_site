@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'customers/products#top'
 
   devise_for :admins, controllers: {
   	sessions:      'admins/sessions',
@@ -15,7 +16,6 @@ Rails.application.routes.draw do
 
   get 'customers/confirm'
 
-  root 'customers/products#top'
 
    namespace :admins do
 
@@ -23,10 +23,10 @@ Rails.application.routes.draw do
 
 
    namespace :customers do
-   	 resources :orders,    only:[:show]
+   	 resources :orders,    only:[:new]
    	 resources :products,  only:[:show,:index]
    	 resources :customers, only:[:show,:update,:edit]
-   	 resources :cart_items,only:[:index,:edit,:update,:destroy]
+   	 resources :cart_items,only:[:index,:update,:destroy]
    end
 
 

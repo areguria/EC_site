@@ -1,5 +1,5 @@
 class Customers::OrdersController < ApplicationController
-	def show
+	def new
 	end
 
 end

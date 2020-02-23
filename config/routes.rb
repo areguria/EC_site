@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root 'products#top'
   devise_for :admins, controllers: {
   	sessions:      'admins/sessions',
   	passwords:     'admins/passwords',
@@ -16,14 +18,7 @@ Rails.application.routes.draw do
 end
   resources :customers,only:[:show,:update,:edit]
   get 'customers/confirm'
-
-  get 'cart_items/index'
-  get 'cart_items/edit'
-
-  root 'products#top'
-  get  'products/show'
-  get  'products/index'
-
+  
   resources :cart_items,only:[:index,:edit,:update,:destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

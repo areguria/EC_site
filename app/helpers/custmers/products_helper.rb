@@ -1,2 +1,0 @@
-module Custmers::ProductsHelper
-end

@@ -1,18 +1,25 @@
 Rails.application.routes.draw do
 
-  get 'cart_items/index'
-  get 'cart_items/edit'
+
   devise_for :customers
   devise_for :admins
 
-  resources :customers,only:[:show,:update,:edit]
   get 'customers/confirm'
 
-  root 'products#top'
-  get  'products/show'
-  get  'products/index'
+  root 'customers/products#top'
+   
+   namespace :admins do
 
-  resources :cart_items,only:[:index,:edit,:update,:destroy]
+   end
+
+
+   namespace :customers do
+   	 resources :orders,    only:[:show]
+   	 resources :products,  only:[:show,:index]
+   	 resources :customers, only:[:show,:update,:edit]
+   	 resources :cart_items,only:[:index,:edit,:update,:destroy]
+   end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'customers/products#top'
 
   namespace :customers do
     get 'orders/confirm'
@@ -18,17 +19,16 @@ Rails.application.routes.draw do
   	passwords:     'customers/passwords',
   	registrations: 'customers/registrations'
   }
-
    namespace :admins do
      resources :products
    end
 
 
    namespace :customers do
-   	 resources :orders,    only:[:show]
+   	 resources :orders,    only:[:new]
    	 resources :products,  only:[:show,:index]
    	 resources :customers, only:[:show,:update,:edit]
-   	 resources :cart_items,only:[:index,:edit,:update,:destroy]
+   	 resources :cart_items,only:[:index,:update,:destroy]
    end
 
 

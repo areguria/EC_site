@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
   root 'customers/products#top'
 
-  namespace :customers do
-    get 'orders/confirm'
-  end
-  root 'customers/products#top'
-
-  namespace :customers do
-    get 'cart_items/index'
-  end
   devise_for :admins, controllers: {
   	sessions:      'admins/sessions',
   	passwords:     'admins/passwords',

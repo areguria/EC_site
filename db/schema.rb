@@ -12,7 +12,11 @@
 
 
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_02_22_093251) do
+=======
+ActiveRecord::Schema.define(version: 2020_02_22_090733) do
+>>>>>>> b2482f1633f15c929e0d6ccece8dba3bf3d9eff4
 
 
   create_table "admins", force: :cascade do |t|

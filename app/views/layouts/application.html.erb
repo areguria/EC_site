@@ -28,7 +28,7 @@
   <ul class="nav navbar-nav navbar-right">
     <% if customer_signed_in? %>
     <li>
-      <%= link_to "商品一覧",products_path, class:'border' %>
+      <%= link_to "商品一覧",'#', class:'border' %>
     </li>
     <li>
       <%= link_to 'カート','#', class:'border' %>
@@ -41,7 +41,7 @@
     </li>
     <% elsif admin_signed_in? %>
     <li>
-      <%= link_to '商品一覧',products_path %>
+      <%= link_to '商品一覧','#' %>
     </li>
     <li>
       <%= link_to '会員一覧','#' %>
@@ -56,7 +56,7 @@
       <% else %>
 
       <li>
-      <%= link_to "商品一覧",products_path, class:'border' %>
+      <%= link_to "商品一覧",'#', class:'border' %>
     </li>
     <li>
       <%= link_to 'ログイン',new_customer_session_path, class:'border' %>

@@ -9,7 +9,10 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1cc06ecfba3e61328d0e36a90c91c1b7c1ba7486
 
 ActiveRecord::Schema.define(version: 2020_02_24_033932) do
 

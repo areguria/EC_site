@@ -1,0 +1,55 @@
+<h2>注文詳細画面</h2>
+
+<table>
+	<tr>
+		<th>購入者</th>
+		<td>山田花子</td>
+	</tr>
+	<tr>
+		<th>配送先</th>
+		<td>
+		  322-2332</br>
+		  東京都檜垣時123ー323</br>
+		  山田花子
+		</td>
+	</tr>
+	<tr>
+		<th>支払方法</th>
+		<td></td>
+	</tr>
+	<%=form_with do |f| %>
+	<tr>
+		<th>注文ステータス</th>
+		<td>
+			<%= f.select :status, Order.statuses.keys.to_a, {} %>
+
+			<button class="btn btn-info">更新</button>
+	    </td>
+		
+	</tr>
+
+</table>
+<div class="admin-order-show2">
+<table class="table table-bordered">
+	<tr>
+		<th>商品名</th>
+		<th>単価（税込）</th>
+		<th>数量</th>
+		<th>小計</th>
+		<th>製作ステータス</th>
+	</tr>
+	<tr>
+		<td>洋梨の
+		とチーズタルト</td>
+		<td>1200</td>
+		<td>1</td>
+		<td>1200</td>
+		<td>
+			<%= f.select :status, OrderRecord.statuses.keys.to_a, {} %>
+			<button class="btn btn-info">更新</button>
+		</td
+	</tr>
+	<% end %>
+</table>
+</div>
+

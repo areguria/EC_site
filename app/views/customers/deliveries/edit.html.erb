@@ -1,0 +1,24 @@
+<h2>配送先編集</h2>
+
+<table class="table table-bordered">
+	<%= form_with do |f| %>
+	<tr>
+		<th>郵便番号</th>
+		<td>
+			<%= f.text_field :zip_code%>
+		</td>
+	</tr>
+	<tr>
+		<th>住所</th>
+		<td>
+			<%= f.text_field :address,class: "delivery-index-form" %>
+		</td>
+	</tr>
+	<tr>
+		<th>宛名</th>
+		<td>
+			<%= f.text_field :name %>
+		</td>
+	</tr>
+	<% end %>
+</table>

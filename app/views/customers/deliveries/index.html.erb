@@ -1,0 +1,42 @@
+<h2>配送先登録/一覧</h2>
+
+<table class="table table-bordered">
+　　<%= form_with do |f| %>
+	<tr>
+		<th>郵便番号</th>
+		<td>
+			<%= f.text_field :zip_code %>
+		</td>
+	</tr>
+	<tr>
+		<th>住所</th>
+		<td>
+			<%= f.text_field :address,class: "delivery-index-form" %>
+		</td>
+	</tr>
+	<tr>
+		<th>宛名</th>
+		<td>
+			<%= f.text_field :name %>
+		</td>
+	</tr>
+	<% end %>
+</table>
+
+<table class="table table-bordered">
+	<tr>
+		<th>郵便番号</th>
+		<th>住所</th>
+		<th>宛名</th>
+		<th></th>
+	</tr>
+	<tr>
+		<td>244-0812</td>
+		<td>横浜県横浜市戸塚区柏お３ー910</td>
+		<td>梅機　巧</td>
+		<td>
+			<%= link_to "編集する",'#',class: "btn btn-info" %>
+			<%= link_to "削除する",'#',class: "btn btn-danger",method: :delete, data:{ confirm: "本当に削除しますか？"} %>
+		</td>
+	</tr>
+</table>

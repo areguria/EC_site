@@ -11,17 +11,10 @@ Rails.application.routes.draw do
   	passwords:     'customers/passwords',
   	registrations: 'customers/registrations'
   }
-
-
-
-  get 'customers/confirm'
-
-
    namespace :admins do
-   	resources :orders,    only:[:index,:show]
-
+     resources :orders,    only:[:index,:show]
+     resources :products
    end
-
 
    namespace :customers do
    	 resources :orders,    only:[:new,:index,:show]
@@ -30,7 +23,6 @@ Rails.application.routes.draw do
    	 resources :cart_items,only:[:index,:update,:destroy]
      resources :deliveries,only:[:index,:edit,:update,:destroy]
    end
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

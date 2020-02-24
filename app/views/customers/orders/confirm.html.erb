@@ -1,0 +1,97 @@
+<style>
+	main {
+		width: 1100px;
+	}
+	.clearfix::after {
+		content: "";
+		clear: both;
+		display: block;
+	}
+
+	.cart-table1 {
+		width: 800px;
+		float: left;
+	}
+	.cart-table2 {
+		width: 250px;
+		float: left;
+		margin-top: 60px;
+		margin-left: 10px;
+	}
+
+	.botton {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	th {
+		background-color: #f5f5f5;
+	}
+</style>
+
+<main>
+	<h4>購入情報確認</h4>
+
+<div class="table clearfix">
+	<div class="cart-table1">
+		<table class="table table-bordered">
+			<tr>
+				<th>商品名</th>
+				<th>単価（税込）</th>
+				<th>数量</th>
+				<th>小計</th>
+			</tr>
+			<tr>
+				<td width="250">
+				<div class="cart-image"></div>
+		　　　	<a>イチゴのショートケーキ</a>
+	    		</td>
+				<td width="100">1,100</td>
+				<td width="80px">1</td>
+				<td width="100px">1100</td>
+　　　		</tr>
+			<tr>
+				<td width="250">
+				<div class="cart-image"></div>
+		　　　	<a>チョコレートケーキ</a>
+	    		</td>
+				<td width="150">1,000</td>
+				<td width="80">1</td>
+				<td width="150">1000</td>
+　　　		</tr>
+		</table>
+	</div>
+
+	<div class="cart-table2">
+		<table class="table table-bordered">
+			<tr>
+				<th>送料</th>
+				<td>800</td>
+			</tr>
+			<tr>
+				<th>商品合計</th>
+				<td>2100</td>
+			</tr>
+			<tr>
+				<th>請求金額</th>
+				<td>2900</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="cash">
+	<h3>支払方法</h3>
+	<div class="cashmeans">
+		<p>銀行振込</p>
+	</div>
+</div>
+
+<div class="delivery-code">
+	<h3>お届け先</h3>
+	<p>鹿児島県志布志市志布志町志布志</p>
+</div>
+
+<div class="botton">
+<%= link_to "購入を確定する",'', class:'btn btn-info' %>
+</div>
+</main>

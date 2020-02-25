@@ -28,16 +28,16 @@
   <ul class="nav navbar-nav navbar-right">
     <% if customer_signed_in? %>
     <li>
-      <%= link_to "商品一覧",customers_products_path, class:'border' %>
+      <%= link_to "商品一覧",customers_products_path %>
     </li>
     <li>
-      <%= link_to 'カート',customers_cart_items, class:'border' %>
+      <%= link_to 'カート',customers_cart_items %>
     </li>
     <li>
-      <%= link_to 'ユーザー名','#', class:'border' %>
+      <%= link_to 'ユーザー名','#' %>
     </li>
     <li>
-      <%= link_to "ログアウト",destroy_customer_session_path,method: :delete,class:'border' %>
+      <%= link_to "ログアウト",destroy_customer_session_path,method: :delete %>
     </li>
     <% elsif admin_signed_in? %>
     <li>
@@ -56,13 +56,13 @@
       <% else %>
 
       <li>
-      <%= link_to "商品一覧",customers_products_path, class:'border' %>
+      <%= link_to "商品一覧",customers_products_path %>
     </li>
     <li>
-      <%= link_to 'ログイン',new_customer_session_path, class:'border' %>
+      <%= link_to 'ログイン',new_customer_session_path %>
     </li>
     <li>
-      <%= link_to 'サインイン',new_customer_registration_path,class:'border' %>
+      <%= link_to 'サインイン',new_customer_registration_path %>
     </li>
   <% end %>
 </ul>

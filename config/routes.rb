@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   }
    namespace :admins do
      resources :orders,    only:[:index,:show]
-     resources :products
+     resources :products, only:[:index,:new,:show,:create,:edit,:update,:destroy]
+     resources :categories, only:[:index,:new,:create,:edit,:update,:destroy]
    end
 
    namespace :customers do

@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   	registrations: 'customers/registrations'
   }
    namespace :admins do
-     resources :products
-   	 resources :orders,    only:[:index,:show]
+     resources :orders,    only:[:index,:show]
+     resources :products, only:[:index,:new,:show,:create,:edit,:update,:destroy]
+     resources :categories, only:[:index,:new,:create,:edit,:update,:destroy]
+
    end
 
    namespace :customers do

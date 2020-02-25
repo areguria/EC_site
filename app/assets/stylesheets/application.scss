@@ -23,9 +23,33 @@
   box-sizing: border-box;
 }
 
+
+
+/* footer */
+
+
+footer {
+  width: 100%;
+  height: 80px;
+  background-color: gray;
+}
+.footer-text{
+  line-height: 80px;
+  text-align: center;
+}
+
+
+/* header */
+
+
 header {
 	width: 100%;
 }
+
+
+
+/* cart_item */
+
 
 .delete-bottun{
     width:30px;
@@ -53,8 +77,8 @@ header {
 }
 
 
-
 /* product */
+
 
 .product-show-img{
   background-image: url(cake_2.jpg);
@@ -62,7 +86,10 @@ header {
   height:150px;
 }
 
+
 /* order */
+
+
  .go-button2{
  width:80px;
  margin:0 auto;
@@ -78,7 +105,9 @@ header {
 
 }
 
+
 /* delivery */
+
 
 .delivery-index-form{
   width:100%;

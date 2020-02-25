@@ -12,15 +12,17 @@ Rails.application.routes.draw do
   	registrations: 'customers/registrations'
   }
    namespace :admins do
+     resources :orders,    only:[:index,:show]
      resources :products
    end
 
    namespace :customers do
     get 'orders/confirm'
-   	 resources :orders,    only:[:new]
+   	 resources :orders,    only:[:new,:index,:show]
    	 resources :products,  only:[:show,:index]
    	 resources :customers, only:[:show,:update,:edit]
    	 resources :cart_items,only:[:index,:update,:destroy]
+     resources :deliveries,only:[:index,:edit,:update,:destroy]
    end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_093440) do
   end
 
   create_table "categories", force: :cascade do |t|
+
     t.integer "product_id"
     t.string "name"
     t.boolean "status", default: false, null: false

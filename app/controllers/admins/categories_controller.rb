@@ -1,5 +1,6 @@
 class Admins::CategoriesController < ApplicationController
 
+
 	def index
 		@categorynew = Category.new
 		@categories = Category.all

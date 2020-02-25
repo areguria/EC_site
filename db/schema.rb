@@ -9,7 +9,10 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 2020_02_25_053327) do
+
+
+ActiveRecord::Schema.define(version: 2020_02_25_070619) do
+
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_053327) do
   end
 
   create_table "categories", force: :cascade do |t|
+
     t.integer "product_id"
     t.string "name"
     t.boolean "status", default: false, null: false

@@ -1,7 +1,7 @@
 class CreateCategories < ActiveRecord::Migration[5.2]
   def change
     create_table :categories do |t|
-    	t.integer :product_id, foregin_key: true
+    	t.references :product_id, foregin_key: true
     	t.string :name
     	t.boolean :status ,default: false, null: false
 

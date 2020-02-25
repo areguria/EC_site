@@ -8,75 +8,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <style>
-    footer {
-    width: 100%;
-    height: 80px;
-    background-color: gray;
-  }
-  .footer-text{
-    line-height: 80px;
-    text-align: center;
-  }
-  </style>
   <header>
-<nav class="navbar navbar-inverse">
-  <div class="container">
-    <nav class="nav navbar-nav navbar-left">
-          <span class="logo" style="color: pink;">EC_site(LOGO)</span>
-        </nav>
-  <ul class="nav navbar-nav navbar-right">
-    <% if customer_signed_in? %>
-    <li>
-      <%= link_to "商品一覧",customers_products_path, class:'border' %>
-    </li>
-    <li>
-      <%= link_to 'カート',customers_cart_items, class:'border' %>
-    </li>
-    <li>
-      <%= link_to 'ユーザー名','#', class:'border' %>
-    </li>
-    <li>
-      <%= link_to "ログアウト",destroy_customer_session_path,method: :delete,class:'border' %>
-    </li>
-    <% elsif admin_signed_in? %>
-    <li>
-      <%= link_to '商品一覧','' %>
-    </li>
-    <li>
-      <%= link_to '会員一覧','#' %>
-    </li>
-    <li>
-      <%= link_to '注文一覧','#' %>
-    </li>
-    <li>
-      <%= link_to 'ジャンル編集','#' %>
-    </li>
-
-      <% else %>
-
-      <li>
-      <%= link_to "商品一覧",customers_products_path, class:'border' %>
-    </li>
-    <li>
-      <%= link_to 'ログイン',new_customer_session_path, class:'border' %>
-    </li>
-    <li>
-      <%= link_to 'サインイン',new_customer_registration_path,class:'border' %>
-    </li>
-  <% end %>
-</ul>
-  </div>
-</nav>
-</header>
+    <%= render 'layouts/header' %>
+  </header>
   <body>
     <div class="container">
     <%= yield %>
     </div>
-<footer>
-  <div class="footer-text">
-        <p>copyright ながのCAKE</p>
-     </div>
-</footer>
+     <%= render 'layouts/footer' %>
   </body>
 </html>

@@ -9,14 +9,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> 1cc06ecfba3e61328d0e36a90c91c1b7c1ba7486
-
-=======
->>>>>>> d2730e4a8475c8a4c27956e42ef8ef7a46be36b4
 ActiveRecord::Schema.define(version: 2020_02_25_053327) do
 
   create_table "admins", force: :cascade do |t|

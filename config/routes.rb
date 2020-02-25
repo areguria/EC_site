@@ -16,6 +16,7 @@ Rails.application.routes.draw do
    end
 
    namespace :customers do
+    get 'orders/confirm'
    	 resources :orders,    only:[:new]
    	 resources :products,  only:[:show,:index]
    	 resources :customers, only:[:show,:update,:edit]

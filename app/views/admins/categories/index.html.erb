@@ -1,0 +1,40 @@
+<style>
+	.categories-table {
+		width: 500px;
+	}
+	table {
+		width: 400px;
+		margin: 10px 0;
+	}
+</style>
+
+<h2>ジャンル追加・一覧画面</h2>
+<h3>ジャンル</h3>
+<%= form_for(@categorynew, url:admins_categories_path) do |f| %>
+	<%= f.text_field :name %>
+	<%= f.radio_button :status,true, checked: "checked" %>
+	<%= f.label :有効　%>
+
+	<%= f.radio_button :status,false, checked: "checked" %>
+	<%= f.label :無効　%>
+
+	<%= f.submit '追加',class:'btn btn-info' %>
+	<% end %>
+
+<div class="categories-table">
+	<table class="table table-bordered">
+
+		<tr>
+			<th>ジャンル</th>
+			<th>状態</th>
+			<th></th>
+		</tr>
+		<tr>
+			<%  @categories.each do |f| %>
+			<td><%= f.name %></td>
+			<td><%= f.status %></td>
+			<td><%= link_to '編集する',edit_admins_category_path(f.id),class:'btn btn-primary' %></td>
+		</tr>
+		<% end %>
+	</table>
+</div>

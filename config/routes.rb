@@ -20,11 +20,14 @@ Rails.application.routes.draw do
    namespace :admins do
    	resources :orders,    only:[:index,:show]
     resources :products
+    resources :customers, only:[:index,:edit,:show,:update]
 
    end
 
 
    namespace :customers do
+    get 'customers/confirm'
+  
    	 resources :orders,    only:[:new,:index,:show]
    	 resources :products,  only:[:show,:index]
    	 resources :customers, only:[:show,:update,:edit]

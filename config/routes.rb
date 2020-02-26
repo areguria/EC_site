@@ -12,14 +12,15 @@ Rails.application.routes.draw do
   	registrations: 'customers/registrations'
   }
    namespace :admins do
+     resources :customers, only:[:index,:edit,:show,:update]
      resources :orders,    only:[:index,:show]
      resources :categories, only:[:index,:create,:edit,:update,:destroy]
      resources :products, only:[:index,:new,:show,:create,:edit,:update,:destroy]
    end
 
    namespace :customers do
-    get 'orders/confirm'
-    get 'orders/thanks'
+     get 'customers/confirm'
+     get 'orders/thanks'
    	 resources :orders,    only:[:new,:index,:show]
    	 resources :products,  only:[:show,:index]
    	 resources :customers, only:[:show,:update,:edit]

@@ -1,41 +1,41 @@
 <h2>マイページ</h2>
 <h3>登録情報
-<%= link_to "編集する", '#', class: "btn btn-info" %>
+<%= link_to "編集する",edit_customers_customer_path(@customer), class: "btn btn-info" %>
 <%= link_to "パスワードを変更する", '#', class: "btn btn-info" %>
 </h3>
 
 <table class="table table-bordered">
 	<tr>
 		<th>氏名</th>
-		<td>山田花子</td>
+		<td><%= @customer.name_first %><%= @customer.name_last %></td>
 	</tr>
 	<tr>
 		<th>カナ</th>
-		<td>ヤマダ　ハナコ</td>
+		<td><%= @customer.name_first_kana %><%= @customer.name_last_kana %></td>
 	</tr>
 	<tr>
 		<th>郵便番号</th>
-		<td>〒150-0041</td>
+		<td>〒<%= @customer.zip_code %></td>
 	</tr>
 	<tr>
 		<th>住所</th>
-		<td>東京都渋谷区神南１丁目１９−１１　パークスクウェア２４</td>
+		<td><%= @customer.address %></td>
 	</tr>
 	<tr>
 		<th>電話番号</th>
-		<td>03-6869-4700</td>
+		<td><%= @customer.phone_number %></td>
 	</tr>
 	<tr>
 		<th>メールアドレス</th>
-		<td>hoge@example</td>
+		<td><%= @customer.email %></td>
 	</tr>
 </table>
 
 
 <h3>配送先
-<%= link_to "一覧を見る", '#', class: "btn btn-info"  %>
+<%= link_to "一覧を見る",customers_deliveries_path, class: "btn btn-info"  %>
 </h3>
 <h3>注文履歴
-<%= link_to "一覧を見る", '#', class: "btn btn-info" %>
+<%= link_to "一覧を見る",customers_orders_path, class: "btn btn-info" %>
 </h3>
 

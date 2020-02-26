@@ -6,6 +6,17 @@ class Admins::ProductsController < ApplicationController
  def new
  	@product = Product.new
  end
+ def create
+ 	product = Product.new(product_params)
+ 	if product.save
+ 	    flash[:notice]='Product was successfully created'
+    else
+    	flash[:notice] = "can't be blank"
+    	render :new
+    end
+ end
+
+
 
 
 
@@ -16,7 +27,7 @@ private
 		# redirect_to root_path unless current_user.admin?
 	# end
 	def product_params
-     params.require(:product).permit(:product_image)
+     params.require(:product).permit(:name,:introduction,:product_image)
     end
 
 

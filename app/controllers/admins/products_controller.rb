@@ -2,6 +2,7 @@ class Admins::ProductsController < ApplicationController
  # before_action :if_not_admin
 
  def index
+    @products = Product.all
  end
  def new
  	@product = Product.new
@@ -27,7 +28,7 @@ private
 		# redirect_to root_path unless current_user.admin?
 	# end
 	def product_params
-     params.require(:product).permit(:name,:introduction,:product_image)
+     params.require(:product).permit(:name,:introduction,:product_image,:status,:price)
     end
 
 

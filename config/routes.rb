@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admins do
+    get 'customers/index'
+  end
   root 'customers/products#top'
 
   devise_for :admins, controllers: {
@@ -12,10 +15,18 @@ Rails.application.routes.draw do
   	registrations: 'customers/registrations'
   }
    namespace :admins do
+<<<<<<< HEAD
      resources :customers, only:[:index,:edit,:show,:update]
+=======
+>>>>>>> 9a8223230c6eb12fe209ccccbfe0f66049b1f943
      resources :orders,    only:[:index,:show]
+     get 'orders/top'
      resources :categories, only:[:index,:create,:edit,:update,:destroy]
      resources :products, only:[:index,:new,:show,:create,:edit,:update,:destroy]
+<<<<<<< HEAD
+=======
+     resources :customers, only:[:index,:show,:edit]
+>>>>>>> 9a8223230c6eb12fe209ccccbfe0f66049b1f943
    end
 
    namespace :customers do

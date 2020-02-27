@@ -2,6 +2,7 @@ class Admins::CustomersController < ApplicationController
 	def index
 	end
 	def edit
+		
 		@customer = Customer.find(params[:id])
 	end
 	def update

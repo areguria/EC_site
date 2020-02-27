@@ -1,37 +1,24 @@
 <h2>商品　新規追加画面</h2>
-
 <div class="row">
 	<div class="col-xs-6">
-		<%= form_with model: @product, url: admins_products_path do |f| %>
-
-        <%= attachment_image_tag @product, :product_image, :fill, 300,300, fallback: "no_image.jpg",size: '300'%>
-        <%= f.attachment_field :product_image %>
-
-	</div>
-
-
-	<div class="col-xs-6">
-
-		<%= f.label :商品名 %>
-		<%= f.text_field :name,class: "new-productname" %></br>
-
-		<%= f.label :商品説明 %>
-		<%= f.text_area :introduction,class: "new-introbox" %></br>
-
-		<%= f.label :ジャンル %></br>
-		
-
-		<%= f.label :税抜価格 %>
-		<%= f.text_field :price,class: "new-productname" %>円</br>
-
-		<%= f.label :販売ステータス %>
-		<%= f.select :status, Product.statuses.keys.to_a, {} ,class: "new-productname"%>
-
-		
-	</div>
-	 <div class="text-right">
+		<%= form_with model:@product,url:admins_products_path,local: true do |f| %>
+      <%= f.attachment_field :product_image %>
+		<!-- 	</div>
+			<div class="col-xs-6"> -->
+			<%= f.label :商品名 %>
+			<%= f.text_field :name,class: "new-productname" %></br>
+			<%= f.label :商品説明 %>
+			<%= f.text_area :introduction,class: "new-introbox" %></br>
+			<%= f.label :ジャンル %>
+			<%= f.collection_select :category_id,Category.all,:id,:name %>
+			<%= f.label :税抜価格 %>
+			<%= f.text_field :price,class: "new-productname" %>円</br>
+			<%= f.label :販売ステータス %>
+			<%= f.select :status, Product.statuses.keys.to_a, {} ,class: "new-productname"%>
+			<!--
+			</div>
+			 <div class="text-right"> -->
 	    <%= f.submit '新規登録',class: "btn btn-primary" %>
-	 </div>
-	    <% end %>
-
-</div>
+    <% end %>
+	</div>
+</div

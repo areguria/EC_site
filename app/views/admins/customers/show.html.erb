@@ -1,0 +1,71 @@
+<style>
+	.customer-table {
+		width: 800px;
+	}
+	th {
+		background-color: #f5f5f5;
+	}
+	.button {
+		margin: 20px;
+	}
+	.btn-info {
+		margin: 10px;
+	}
+</style>
+
+<h2>会員詳細画面</h2>
+
+<div class="customer-table">
+<table class="table table-borderd">
+	<tr>
+		<th>顧客ID</th>
+		<td><%= @customer.id %>
+			<span class="bg-primary"><%= @customer.status%></span>
+		</td>
+	</tr>
+	<tr>
+		<th>氏名</th>
+		<td><%= @customer.name_last %>
+			<%= @customer.name_first %>
+		</td>
+	</tr>
+	<tr>
+		<th>フリガナ</th>
+		<td><%= @customer.name_last_kana %>
+			<%= @customername_first_kana %>
+		</td>
+	</tr>
+	<tr>
+		<th>郵便番号</th>
+		<td><%= @customer.zip_code %></td>
+	</tr>
+	<tr>
+		<th>住所</th>
+		<td><%= @customer.address %></td>
+	</tr>
+	<tr>
+		<th>電話番号</th>
+		<td><%= @customer.phone_number %></td>
+	</tr>
+	<tr>
+		<th>メールアドレス</th>
+		<td><%= @customer.email %></td>
+	</tr>
+</table>
+</div>
+
+<div class="button">
+	<%= link_to '編集する',edit_admins_customer_path(@customer),class:'btn btn-success',data: {"turbolinks" => false} %>
+	<%= link_to '注文一覧を見る',admins_orders_path,class:"btn btn-success" %>
+</div>
+
+
+
+
+
+
+
+
+
+
+

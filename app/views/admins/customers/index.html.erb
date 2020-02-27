@@ -1,5 +1,6 @@
-<h2>会員一覧画面</h2>
 
+
+<h2>会員一覧画面</h2>
 <table class="table table-bordered">
 	<tr>
 		<th>会員ID</th>
@@ -7,10 +8,15 @@
 		<th>メールアドレス</th>
 		<th>ステータス</th>
 	</tr>
+	<% @customer.each do |customer| %>
 	<tr>
-		<td>1</td>
-		<td>神崎　あゆみ</td>
-		<td>aaa@aaa.jp</td>
-		<td>有効</td>
+		<td><%= customer.id %></td>
+		<td><%= link_to customer.name_last,admins_customer_path(customer) %>
+			<%= link_to customer.name_first, admins_customer_path(customer) %>
+		</td>
+		<td><%= customer.email %></td>
+		<td><%= customer.status %></td>
 	</tr>
+	<% end %>
 </table>
+</div>

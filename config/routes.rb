@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admins do
+    get 'customers/index'
+  end
   root 'customers/products#top'
 
   devise_for :admins, controllers: {
@@ -13,6 +16,7 @@ Rails.application.routes.draw do
   }
    namespace :admins do
      resources :orders,    only:[:index,:show]
+     get 'orders/top'
      resources :categories, only:[:index,:create,:edit,:update,:destroy]
      resources :products, only:[:index,:new,:show,:create,:edit,:update,:destroy]
      resources :customers, only:[:index,:edit,:show,:update]
@@ -26,7 +30,7 @@ Rails.application.routes.draw do
    	 resources :products,  only:[:show,:index]
    	 resources :customers, only:[:show,:update,:edit,:destroy]
    	 resources :cart_items,only:[:index,:update,:destroy]
-     resources :deliveries,only:[:index,:edit,:update,:destroy]
+     resources :deliveries,only:[:index,:edit,:update,:create,:destroy]
    end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

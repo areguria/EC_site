@@ -1,7 +1,7 @@
 <h2>配送先登録/一覧</h2>
 
 <table class="table table-bordered">
-　　<%= form_with do |f| %>
+　　<%= form_for @delivery,url:customers_deliveries_path do |f| %>
 	<tr>
 		<th>郵便番号</th>
 		<td>
@@ -20,8 +20,9 @@
 			<%= f.text_field :name %>
 		</td>
 	</tr>
-	<% end %>
 </table>
+	<%= f.submit '登録',class:'btn btn-success' %>
+		<% end %>
 
 <table class="table table-bordered">
 	<tr>

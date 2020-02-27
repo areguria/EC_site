@@ -15,16 +15,16 @@ Rails.application.routes.draw do
      resources :orders,    only:[:index,:show]
      resources :categories, only:[:index,:create,:edit,:update,:destroy]
      resources :products, only:[:index,:new,:show,:create,:edit,:update,:destroy]
-    resources :customers, only:[:index,:edit,:show,:update]
-
+     resources :customers, only:[:index,:edit,:show,:update]
    end
 
+
    namespace :customers do
-    get 'orders/confirm'
-    get 'orders/thanks'
+     get 'customers/confirm'
+     get 'orders/thanks'
    	 resources :orders,    only:[:new,:index,:show]
    	 resources :products,  only:[:show,:index]
-   	 resources :customers, only:[:show,:update,:edit]
+   	 resources :customers, only:[:show,:update,:edit,:destroy]
    	 resources :cart_items,only:[:index,:update,:destroy]
      resources :deliveries,only:[:index,:edit,:update,:destroy]
    end

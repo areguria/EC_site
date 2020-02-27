@@ -23,7 +23,7 @@ Rails.application.routes.draw do
      get 'orders/thanks'
    	 resources :orders,    only:[:new,:index,:show]
    	 resources :products,  only:[:show,:index]
-   	 resources :customers, only:[:show,:update,:edit]
+   	 resources :customers, only:[:show,:update,:edit,:destroy]
    	 resources :cart_items,only:[:index,:update,:destroy]
      resources :deliveries,only:[:index,:edit,:update,:destroy]
    end

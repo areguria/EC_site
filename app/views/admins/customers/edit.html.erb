@@ -4,7 +4,7 @@
 	<%= form_with model: @customer,url:admins_customer_path do |f| %>
 	<tr>
 		<th class="edit-th">会員ID</th>
-		<td>1</td>
+		<td><%= @customer.id %></td>
 	</tr>
 	<tr>
 		<th class="edit-th">氏名</th>
@@ -48,9 +48,9 @@
 		<th class="edit-th">会員ステータス</th>
 		<td>
 			<%= f.label :有効 %>
-			<%= f.radio_button :status,0, checked: "checked" %>
+			<%= f.radio_button :status,true, checked: "checked" %>
 			<%= f.label :無効 %>
-			<%= f.radio_button :status,1, checked: "checked" %>
+			<%= f.radio_button :status,false, checked: "checked" %>
 		</td>
 	</tr>
 </table>

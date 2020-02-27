@@ -13,7 +13,7 @@ class Customers::CustomersController < ApplicationController
 	def confirm
 	end
 	def destroy
-		customer = Customer.find(id: params[:id])
+		customer = Customer.find(params[:id])
 		customer.destroy
 		redirect_to("/")
 	end

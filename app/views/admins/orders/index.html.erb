@@ -7,10 +7,12 @@
 		<th>注文個数</th>
 		<th>注文ステータス</th>
 	</tr>
+	<%= form_with do |f| %>
 	<tr>
-		<td>2019/11/20 23:55:11</td>
-		<td>石倉ノア</td>
-		<td>１</td>
-		<td>入金待ち</td>
+		<td><%= f.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+		<td><%= f.name %></td>
+		<td><%= f.counts %></td>
+		<td><%= f.status %></td>
 	</tr>
+	<% end %>
 </table>

@@ -7,6 +7,6 @@ class AddNameLastToCustomers < ActiveRecord::Migration[5.2]
     add_column :customers, :address, :string
     add_column :customers, :zip_code, :string
     add_column :customers, :phone_number, :string
-    add_column :customers, :status, :booleant, default: false, null: false
+    add_column :customers, :status, :boolean, default: false, null: false
   end
 end

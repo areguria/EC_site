@@ -2,48 +2,48 @@
  <div class="container">
 
   <nav class="nav navbar-nav navbar-left">
-    <span class="logo" style="color: pink;">EC_site(LOGO)</span>
+    <%= link_to "EC_site(LOGO)",root_path %>
   </nav>
 
 <ul class="nav navbar-nav navbar-right">
     <% if customer_signed_in? %>
     <li class="header-content">
-      <%= link_to "商品一覧",'#', class:'border' %>
+      <%= link_to "商品一覧",customers_products_path %>
     </li>
     <li>
-      <%= link_to 'カート','#', class:'border' %>
+      <%= link_to 'カート',customers_cart_items_path %>
     </li>
     <li>
-      <%= link_to 'ユーザー名',customers_customer_path(current_customer), class:'border' %>
+      <%= link_to 'ユーザー名',customers_customer_path(current_customer.id) %>
     </li>
     <li>
-      <%= link_to "ログアウト",destroy_customer_session_path,method: :delete,class:'border' %>
+      <%= link_to "ログアウト",destroy_customer_session_path,method: :delete %>
     </li>
 
     <% elsif admin_signed_in? %>
     <li>
-      <%= link_to '商品一覧','#' %>
+      <%= link_to '商品一覧',admins_products_path %>
     </li>
     <li>
-      <%= link_to '会員一覧','#' %>
+      <%= link_to '会員一覧',admins_customers_path %>
     </li>
     <li>
-      <%= link_to '注文一覧','#' %>
+      <%= link_to '注文一覧',admins_orders_path %>
     </li>
     <li>
-      <%= link_to 'ジャンル編集','#' %>
+      <%= link_to 'ジャンル編集',admins_categories_path %>
     </li>
 
     <% else %>
 
     <li class="header-content">
-      <%= link_to "商品一覧",'#', class:'border' %>
+      <%= link_to "商品一覧",customers_products_path %>
     </li>
     <li class="header-content">
-      <%= link_to 'ログイン',new_customer_session_path, class:'border' %>
+      <%= link_to 'ログイン',new_customer_session_path %>
     </li>
     <li class="header-content">
-      <%= link_to 'サインイン',new_customer_registration_path,class:'border' %>
+      <%= link_to 'サインイン',new_customer_registration_path %>
     </li>
     <% end %>
 </ul>

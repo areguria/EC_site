@@ -19,38 +19,44 @@
 <table class="table table-borderd">
 	<tr>
 		<th>顧客ID</th>
-		<td>1 ステータス</td>
+		<td><%= @customer.id %>
+			<span class="bg-primary"><%= @customer.status%></span>
+		</td>
 	</tr>
 	<tr>
 		<th>氏名</th>
-		<td>山田 花子</td>
+		<td><%= @customer.name_last %>
+			<%= @customer.name_first %>
+		</td>
 	</tr>
 	<tr>
 		<th>フリガナ</th>
-		<td>ヤマダ ハナコ</td>
+		<td><%= @customer.name_last_kana %>
+			<%= @customername_first_kana %>
+		</td>
 	</tr>
 	<tr>
 		<th>郵便番号</th>
-		<td>150041</td>
+		<td><%= @customer.zip_code %></td>
 	</tr>
 	<tr>
 		<th>住所</th>
-		<td>東京都渋谷区神南</td>
+		<td><%= @customer.address %></td>
 	</tr>
 	<tr>
 		<th>電話番号</th>
-		<td>xxx-xxxx-xxxx</td>
+		<td><%= @customer.phone_number %></td>
 	</tr>
 	<tr>
 		<th>メールアドレス</th>
-		<td>aaaa@aaaa.jp</td>
+		<td><%= @customer.email %></td>
 	</tr>
 </table>
 </div>
 
 <div class="button">
-	<%= link_to '編集する','',class:'btn btn-success' %>
-	<%= link_to '注文一覧を見る','',class:"btn btn-success" %>
+	<%= link_to '編集する',edit_admins_customer_path(@customer),class:'btn btn-success',data: {"turbolinks" => false} %>
+	<%= link_to '注文一覧を見る',admins_orders_path,class:"btn btn-success" %>
 </div>
 
 

@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2020_02_26_083558) do
+
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -57,12 +58,8 @@ ActiveRecord::Schema.define(version: 2020_02_26_083558) do
     t.string "zip_code"
     t.string "phone_number"
     t.boolean "status", default: false, null: false
-<<<<<<< HEAD
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_customers_on_deleted_at"
-=======
-    t.boolean "deleted_at"
->>>>>>> 9a8223230c6eb12fe209ccccbfe0f66049b1f943
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

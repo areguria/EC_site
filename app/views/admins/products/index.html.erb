@@ -1,6 +1,6 @@
 <h2>商品画面一覧</h2>
 
-<%= link_to 'products/new' do %>
+<%= link_to 'products/new',data: {"turbolinks" => false} do %>
 <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 <% end %>
 
@@ -12,11 +12,13 @@
 		<th>ジャンル</th>
 		<th>ステータス</th>
 	</tr>
+	<% @products.each do |product| %>
 	<tr>
-		<td>1</td>
-		<td>チーズタルト</td>
-		<td>1200</td>
-		<td>ケーキ</td>
-		<td>販売中</td>
+		<td><%= product.id %></td>
+		<td><%= product.name %></td>
+		<td><%= product.price %></td>
+		<td><%= product.category %></td>
+		<td><%= product.status %></td>
 	</tr>
+	<% end %>
 </table>

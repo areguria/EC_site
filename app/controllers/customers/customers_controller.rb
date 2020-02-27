@@ -12,7 +12,6 @@ class Customers::CustomersController < ApplicationController
 	end
 	def confirm
 	end
-
 	def destroy
 		customer = Customer.find(id: params[:id])
 		customer.destroy
@@ -20,7 +19,8 @@ class Customers::CustomersController < ApplicationController
 	end
 
 	private
-	def customer_params
-		params.require(:customer).permit(:email,:name_last,:name_last_kana,:name_first,:name_first_kana,:address,:zip_code,:phone_number,:status)
-	end
+	 def customer_params
+		params.require(:customer).permit(:name_last,:name_first,:name_last_kana,
+			:name_first_kana,:address,:zip_code,:phone_number,:status)
+	 end
 end

@@ -14,7 +14,7 @@
       <%= link_to 'カート',customers_cart_items_path, class:'border' %>
     </li>
     <li>
-      <%= link_to 'ユーザー名',customers_customer_path(current_customer.id), class:'border' %>
+      <%= link_to 'ユーザー名',customers_customer_path(current_customer), class:'border' %>
     </li>
     <li>
       <%= link_to "ログアウト",destroy_customer_session_path,method: :delete,class:'border' %>

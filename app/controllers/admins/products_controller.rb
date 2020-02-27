@@ -1,21 +1,17 @@
 class Admins::ProductsController < ApplicationController
 
    def index
-	@product = Product.all
+	@products = Product.all
    end
    def new
  	@product = Product.new
+
    end
 
    def create
  	  product = Product.new(product_params)
- 	  if product.save
- 	    flash[:notice]='Product was successfully created'
- 	    redirect_to admins_product_path(product)
-      else
-    	flash[:notice] = "can't be blank"
-    	render :new
-      end
+ 	  product.save
+ 	  redirect_to admins_product_path(product)
    end
 
 
@@ -34,7 +30,7 @@ class Admins::ProductsController < ApplicationController
 
     private
 	def product_params
-     params.require(:product).permit(:name,:introduction,:product_image,:status,:price)
+     params.require(:product).permit(:name,:introduction,:category_id,:product_image,:status,:price)
  	end
 
 	def admin_user

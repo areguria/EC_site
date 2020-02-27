@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_26_083558) do
+ActiveRecord::Schema.define(version: 2020_02_27_122202) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2020_02_26_083558) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.integer "product_id"
     t.string "name"
     t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
@@ -71,6 +70,7 @@ ActiveRecord::Schema.define(version: 2020_02_26_083558) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
   end
 
   create_table "order_records", force: :cascade do |t|
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2020_02_26_083558) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.integer "category_id"
     t.index ["deleted_at"], name: "index_products_on_deleted_at"
   end
 

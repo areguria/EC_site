@@ -1,10 +1,12 @@
 <h2>商品　編集画面</h2>
+<div class="row">
+  <div class="col-xs-6">
+      <%= form_for @product,url: admins_product_path do |f|%>
 
-<% form_for @product do |f|%>
-<div class="products-show clearfix">
-	<%= attachment_image_tag , :product_image, :fill, 300, 200, format: 'jpeg', class: "product-img", fallback: "/assets/cookie3-cd19a5fa42ed9fe8c98c228036aebc5436910ff68c6fd384ee5c989226c742e0.jpg"%>
-
-  <table class="products-table">
+	    <%= attachment_image_tag @product,:product_image, :fill, 300, 200, format: 'jpeg', class: "product-img"%>
+  </div>
+    <div class="col-xs-6">
+      <table class="products-table">
       <tr>
         <th>商品名</th>
         <td><%= f.text_field :name %></td>
@@ -15,7 +17,7 @@
       </tr>
       <tr>
         <th>ジャンル</th>
-        <td><%= f.collection_select :categorise_status,Category.all, :id, :category_name  %></td>
+        <td><%= f.collection_select :category_id,Category.all, :id, :name %></td>
       </tr>
       <tr>
         <th>税込価格(税抜き価格)</th>
@@ -23,12 +25,12 @@
       </tr>
       <tr>
         <th>販売ステータス</th>
-        <td><%= f.select :status %></td>
-     </tr>
-  </table>
-</div>
+        <td><%= f.select :status, Product.statuses.keys.to_a %></td>
+      </tr>
+      </table>
+    </div>
 
-  <div class="botton">
-    <%= f.submit "変更を保存", class:"btn btn-success" %>
-  </div>
-  <% end %>
+            <%= f.submit "変更を保存", class:"btn btn-primary" %>
+ 
+      <% end %>
+</div>

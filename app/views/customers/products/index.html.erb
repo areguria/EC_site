@@ -1,15 +1,10 @@
 <style>
-	main {
-		width: 1000px;
-		height: 600px;
-		margin: 0 auto;
-	}
+
 	.sidebar {
-		width: 270px;
-		height: 450px;
+		width: 100%;
+		height: 100%;
 		border: 2px solid;
 		float: left;
-		margin: 2px;
 	}
 
 	.categori-head {
@@ -17,64 +12,48 @@
 	}
 
 	.index {
-		width: 700px;
-		height: 600px;
+		width: 100%;
+		height: 1600px;
 		border: 2px solid;
-		float: left;
 		margin: 2px;
 	}
 	.product {
-		width: 320px;
-		height: 200px;
-		border: 2px solid;
-		margin: 10px;
-		float: left;
+		width:300px;
+		height:200px;
+		float:left;
+    margin: 2px;
+
 	}
-	.image {
-		width: 250px;
-		height: 100px;
-		border: 2px solid;
-		margin: 10px auto;
-	}
+.
+
 </style>
 
-<main>
-	<div class="sidebar">
-		<div class="categori">
+<div class="row">
+	<div class="col-xs-4">
+
+	  <div class="sidebar">
 			<div class="categori-head">
 				<h2>ジャンル検索</h2>
 			</div>
-		</div>
-		<div class="categori-item">
-			<h3>ケーキ</h3>
-			<h3>焼き菓子</h3>
-		</div>
-	</div>
-	<div class="index">
-		<h2>商品一覧</h2>
-		<div class="product">
-			<div class="image">
-			</div>
-			<h4>商品名</h4>
-			<h4>価格¥</h4>
-		</div>
-		<div class="product">
-			<div class="image">
-			</div>
-			<h4>商品名</h4>
-			<h4>価格¥</h4>
-		</div>
-		<div class="product">
-			<div class="image">
-			</div>
-			<h4>商品名</h4>
-			<h4>価格¥</h4>
-		</div>
-		<div class="product">
-			<div class="image">
-			</div>
-			<h4>商品名</h4>
-			<h4>価格¥</h4>
-		</div>
-	</div>
-</main>
+			  <% @categories.each do |category| %>
+			<h3><%= category.name %></h3>
+			  <% end %>
+	  </div>
+  </div>
+
+  <div class="col-xs-8">
+	  <div class="index">
+		  <h2>商品一覧(全何件）</h2>
+		    <div class="product">
+			    <% @products.each do |product| %>
+			    <%= link_to(customers_product_path(product)) do %>
+			      <%= attachment_image_tag product,:product_image %>
+			     <h3><%= product.name %></h3>
+			      <h3>¥<%= product.price %></h3>
+			      <% end %>
+			    <% end %>
+			    <%= paginate @products %>
+		    </div>
+	  </div>
+  </div>
+</div>

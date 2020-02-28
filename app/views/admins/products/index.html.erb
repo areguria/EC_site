@@ -1,6 +1,6 @@
 <h2>商品画面一覧</h2>
 
-<%= link_to 'products/new',data: {"turbolinks" => false} do %>
+<%= link_to new_admins_product_path,data: {"turbolinks" => false} do %>
 <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
 <% end %>
 
@@ -17,7 +17,7 @@
 		<td><%= product.id %></td>
 		<td><%= product.name %></td>
 		<td><%= product.price %></td>
-		<td><%= product.category %></td>
+		<td><%= product.category.name %></td>
 		<td><%= product.status %></td>
 	</tr>
 	<% end %>

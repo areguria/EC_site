@@ -25,31 +25,33 @@
 
 <h2>商品 詳細画面</h2>
 <div class="products-show clearfix">
-<p><img src="/assets/cookie3-cd19a5fa42ed9fe8c98c228036aebc5436910ff68c6fd384ee5c989226c742e0.jpg" class="img-1"></p>
+<p><%= attachment_image_tag @product, :product_image, class: "img-1" %></p>
   <table class="products-table">
       <tr>
         <th>商品名</th>
-        <td>ショートケーキ</td>
+        <td><%= @product.name %></td>
       </tr>
       <tr>
         <th>商品説明</th>
-        <td>説明文</td>
+        <td><%= @product.introduction %></td>
       </tr>
       <tr>
         <th>ジャンル</th>
-        <td>ケーキ</td>
+        <td><%= @product.category.name %></td>
       </tr>
       <tr>
         <th>税込価格(税抜き価格)</th>
-        <td>1,100(1,000) 円</td>
+        <td><%= (@product.price * 1.1).floor %>
+          (<%= @product.price %>)円
+        </td>
       </tr>
       <tr>
         <th>販売ステータス</th>
-        <td>販売中</td>
+        <td><%= @product.status %></td>
      </tr>
   </table>
 </div>
 
   <div class="botton">
-    <%=link_to "編集する",'#', class:"btn btn-success" %>
+    <%=link_to "編集する",edit_admins_product_path, class:"btn btn-success" %>
   </div>

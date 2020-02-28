@@ -3,6 +3,8 @@ class Customers::CartItemsController < ApplicationController
   def index
   	@cart_items = current_cart.cart_items
   end
+  def create
+  end
 
   def add_item
   	if @cart_item.blank?

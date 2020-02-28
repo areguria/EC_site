@@ -1,7 +1,7 @@
 <h2>配送先編集</h2>
 
 <table class="table table-bordered">
-	<%= form_with do |f| %>
+	<%= form_for @delivery,url:customers_delivery_path(@delivery) do |f| %>
 	<tr>
 		<th>郵便番号</th>
 		<td>
@@ -20,5 +20,6 @@
 			<%= f.text_field :name %>
 		</td>
 	</tr>
-	<% end %>
 </table>
+<%= f.submit '変更を保存する',class:'btn btn-success' %>
+	<% end %>

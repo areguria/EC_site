@@ -1,7 +1,7 @@
 <h2>ショッピングカート</h2>
 
 <div class="delete-bottun">
-<%=link_to "カートを空にする",customers_cart_item_path(@cart_item),class: "btn btn-danger",method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<%=link_to "カートを空にする",'',class: "btn btn-danger",method: :delete, "data-confirm" => "本当に削除しますか？" %>
 </div>
 
 <div class="cart-table1">
@@ -16,7 +16,6 @@
 	<tr>
 		<td width="200">
 		<div class="cart-image"></div>
-		　<a>イチゴのショートケーキ</a>
 	    </td>
 		<td width="80">1,100</td>
 		<td width="50">1 <button type="button" class="btn btn-info">変更</button>

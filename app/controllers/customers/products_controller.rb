@@ -10,6 +10,7 @@ class Customers::ProductsController < ApplicationController
 	def index
 		@products = Product.page(params[:page]).per(PER)
 		@categories = Category.all
+		@allcount = Product.all.count
 	end
 
 	private

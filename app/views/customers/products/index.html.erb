@@ -14,17 +14,18 @@
 	.index {
 		width: 100%;
 		height: 1600px;
-		border: 2px solid;
 		margin: 2px;
 	}
 	.product {
 		width:300px;
 		height:200px;
-		float:left;
-    margin: 2px;
-
+        margin: 2px;
 	}
-.
+.product-contents{
+	border-bottom:2px solid;
+	margin-bottom:10px;
+}
+
 
 </style>
 
@@ -43,14 +44,19 @@
 
   <div class="col-xs-8">
 	  <div class="index">
-		  <h2>商品一覧(全何件）</h2>
+		  <h2>商品一覧(全<%= @allcount %>件)</h2>
 		    <div class="product">
+
 			    <% @products.each do |product| %>
 			    <%= link_to(customers_product_path(product)) do %>
 			      <%= attachment_image_tag product,:product_image %>
-			     <h3><%= product.name %></h3>
-			      <h3>¥<%= product.price %></h3>
-			      <% end %>
+
+			      <div class="product-contents">
+			      <h3><%= product.name %></br>
+			      ¥<%= product.price %></h3>
+			      </div>
+
+			    <% end %>
 			    <% end %>
 			    <%= paginate @products %>
 		    </div>

@@ -5,6 +5,7 @@ class Customers::ProductsController < ApplicationController
 	def show
 		@categories = Category.all
 		@product = Product.find(params[:id])
+		@cart_item = CartItem.new
 	end
 	PER = 8
 	def index

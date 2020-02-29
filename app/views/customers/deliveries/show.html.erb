@@ -11,7 +11,7 @@
 	<tr>
 		<th>住所</th>
 		<td>
-			<%= f.text_field :address,class:"delivery-index-form" %>
+			<%= f.text_field :address,class: "delivery-index-form" %>
 		</td>
 	</tr>
 	<tr>
@@ -31,14 +31,14 @@
 		<th>宛名</th>
 		<th></th>
 	</tr>
-	<%  @deliveries.each do |delivery| %>
+	<% @deliveries.each do |delivery| %>
 	<tr>
-		<td><%= delivery.zip_code %></td>
-		<td><%= delivery.address %></td>
-		<td><%= delivery.name %></td>
+		<td>244-0812</td>
+		<td>横浜県横浜市戸塚区柏お３ー910</td>
+		<td>梅機　巧</td>
 		<td>
-			<%= link_to '編集する',edit_customers_delivery_path(delivery),class: "btn btn-info" %>
-			<%= link_to '削除する',customers_delivery_path(delivery),class: "btn btn-danger",method: :delete, data:{ confirm: "本当に削除しますか？"} %>
+			<%= link_to "編集する",'#',class: "btn btn-info" %>
+			<%= link_to "削除する",'#',class: "btn btn-danger",method: :delete, data:{ confirm: "本当に削除しますか？"} %>
 		</td>
 	</tr>
 	<% end %>

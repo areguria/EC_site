@@ -11,6 +11,5 @@ $("document").ready(function(){
 		keyboardOnAlways: true,
 		hidePrevious: false
 	});
-
 	$(".slide").skippr();
 });

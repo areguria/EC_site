@@ -13,18 +13,20 @@
 		<th>小計</th>
 		<th></th>
 	</tr>
+	<% @cart_items.each do |cart_item| %>
 	<tr>
 		<td width="200">
-		<div class="cart-image"></div>
+		<%= attachment_image_tag cart_item,:product_image,:fill,200,200, fallback: "no_image.jpg" %><%= cart_item.name %>
 	    </td>
-		<td width="80">1,100</td>
+		<td width="80"></td>
 		<td width="50">1 <button type="button" class="btn btn-info">変更</button>
 		</td>
 		<td width="50">1,100</td>
 		<td width="50">
-			<%=link_to "削除する",'#',class: "btn btn-danger",method: :delete, "data-confirm" => "本当に削除しますか？" %>
+			<%=link_to "削除する",customers_cart_item_path(cart_item),class: "btn btn-danger",method: :delete, "data-confirm" => "本当に削除しますか？" %>
 		</td>
 　　　</tr>
+<% end %>
 </table>
 </div>
 

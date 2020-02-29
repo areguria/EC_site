@@ -11,9 +11,15 @@
 	    </tr>
     </table>
  </div>
+
   <%= form_with model: @product,url:customers_cart_items_path,local: true,method:"post" do |f| %>
   <div class="col-xs-4">
     <%= attachment_image_tag @product,:product_image,:fill,200,200, fallback: "no_image.jpg"%>
+
+<%= form_with model: @cart_item,url:customers_cart_items_path,local: true,method:"post" do |f| %>
+  <div class="col-xs-4">
+       <%= attachment_image_tag @product,:product_image,:fill,200,200, fallback: "no_image.jpg"%>
+
   </div>
   <div class="col-xs-5">
    <div class="contents">
@@ -24,5 +30,5 @@
 　　     <%= f.submit "カートに入れる",class: "btn btn-success" %>
     </div>
   </div>
-  <% end %>
+   <% end %>
 </div>

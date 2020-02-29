@@ -48,7 +48,7 @@
 		    <div class="product">
 
 			    <% @products.each do |product| %>
-			    <%= link_to(customers_product_path(product)) do %>
+			    <%= link_to(customers_product_path(product)) do%>
 			      <%= attachment_image_tag product,:product_image %>
 
 			      <div class="product-contents">

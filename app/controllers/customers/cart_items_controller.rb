@@ -5,8 +5,12 @@ class Customers::CartItemsController < ApplicationController
   end
 
   def create
-  	cart_item = Cart_item.new(params[:id])
+    cart_item = CartItem.new(cart_item_params)
+    # cart_items = Product.find_by(id: cart_item_params[:product_id])
+    cart_item.customer_id = current_customer
   	cart_item.save
+    redirect_to customers_cart_item_path(current_customer)
+
 	end
 
   def destroy
@@ -16,7 +20,9 @@ class Customers::CartItemsController < ApplicationController
   end
 
   private
+  
   def cart_item_params
   	params.require(:cart_item).permit(:product_id,:count)
   end
+
 end

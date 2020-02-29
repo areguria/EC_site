@@ -1,33 +1,27 @@
 class Customers::CartItemsController < ApplicationController
 
-  def index
-  	@cart_items = current_cart.cart_items
+  def show
+  	@cart_items = current_customer.cart_items
   end
+
   def create
+  	@cart_item = params[:cart_item_id]
+  	if Cart.where(customer_id: current_customer.id)
+  		@cart_item = Cart.find(customer_id: current_customer.id)
+  	else
+  		@cart_item = Cart_item.new
+  		@cart_item.customer_id = current_customer.id
+  		@cart_item.save
   end
 
-  def add_item
-  	if @cart_item.blank?
-  		@cart_item = current_cart.cart_items.build(product_id: params[:product_id])
-  	end
-
-  	@cart_item.quantity += params[:quantity].to_i
-  	@cart_item.save
-  	redirect_to current_cart
-  end
-
-  def update_item
-  	@cart_item.update(quantity: params[:quantity].to_i)
-  	redirect_to current_cart
-  end
-
-  def delete_item
-  	@cart_item.destory
-  	redirect_to current_cart
+  def destroy
+  	@cart_item = current_cart_item
+  	@cart_item.destroy
+  	redirect_to customers_cart_items_path(current_customer)
   end
 
   private
-  def setup_cart_item!
-  	@cart_item = current_cart.cart_items.find_by(product_id: params[:product_id])
+  def cart_item_params
+  	params.require(:cart_item).permit(:product_id,:count)
   end
 end

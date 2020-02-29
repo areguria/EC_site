@@ -1,8 +1,5 @@
 $("document").ready(function(){
-	$(".slide").skippr();
-});
-
-$('.slide').skippr({
+	$('.slide').skippr({
 	transition: 'fade',
 	speed: 1000,
 	easing: 'easeOutQuart',
@@ -13,4 +10,6 @@ $('.slide').skippr({
 	autoPlayDuration: 5000,
 	keyboardOnAlways: true,
 	hidePrevious: false
+	});
+	$(".slide").skippr();
 });

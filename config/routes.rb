@@ -29,7 +29,7 @@ Rails.application.routes.draw do
    	 resources :orders,    only:[:new,:index,:show]
    	 resources :products,  only:[:show,:index]
    	 resources :customers, only:[:show,:update,:edit,:destroy]
-   	 resources :cart_items,only:[:index,:update,:destroy,:create,:edit]
+   	 resources :cart_items,only:[:show,:update,:destroy,:create,:edit]
      resources :deliveries,only:[:index,:edit,:update,:create,:destroy]
    end
 

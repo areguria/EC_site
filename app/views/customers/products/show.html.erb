@@ -12,31 +12,18 @@
     </table>
  </div>
 
+<%= form_with model: @cart_item,url:customers_cart_items_path,local: true,method:"post" do |f| %>
   <div class="col-xs-4">
-     <%= form_with model: @product,url:customers_cart_items_path do |f| %>
-       <%= attachment_image_tag @product,:product_image,:fill,200,200, fallback: "no_image.jpg" %>
+       <%= attachment_image_tag @product,:product_image,:fill,200,200, fallback: "no_image.jpg"%>
   </div>
   <div class="col-xs-5">
    <div class="contents">
     <p><%= @product.name %></p>
     <p><%= @product.introduction %></p>
     <p>¥<%= @product.price %></p>
-    <p>個数選択
-      <select name="num">
-        <option value="">-</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-      </select> 個</p>
+    <p><%= f.select :count,[1,2,3,4,5,6,7,8,9,10] %>
 　　     <%= f.submit "カートに入れる",class: "btn btn-success" %>
-      <% end %>
-    </div>
+   </div>
   </div>
+   <% end %>
 </div>

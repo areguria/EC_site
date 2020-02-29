@@ -5,14 +5,9 @@ class Customers::CartItemsController < ApplicationController
   end
 
   def create
-  	@cart_item = params[:cart_item_id]
-  	if Cart.where(customer_id: current_customer.id)
-  		@cart_item = Cart.find(customer_id: current_customer.id)
-  	else
-  		@cart_item = Cart_item.new
-  		@cart_item.customer_id = current_customer.id
-  		@cart_item.save
-  end
+  	cart_item = Cart_item.new(params[:id])
+  	cart_item.save
+	end
 
   def destroy
   	@cart_item = current_cart_item

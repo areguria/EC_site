@@ -1,2 +1,3 @@
 module Customers::ProductsHelper
+
 end

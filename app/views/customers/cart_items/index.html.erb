@@ -13,19 +13,22 @@
 		<th>小計</th>
 		<th></th>
 	</tr>
+	<% @sum = 0 %>
 	<% @cart_item.each do |cart_item| %>
 	<tr>
 		<td width="200">
-		<%= attachment_image_tag cart_item,:product_image,:fill,200,200, fallback: "no_image.jpg" %><%= cart_item.name %>
+		<%= attachment_image_tag cart_item.product,:product_image,:fill,50,50, fallback:"no_image.jpg"%>
+		<%= cart_item.product.name %>
 	    </td>
-		<td width="80"></td>
-		<td width="50">1 <button type="button" class="btn btn-info">変更</button>
+		<td width="80"><%= cart_item.product.price %></td>
+		<td width="50"><%= cart_item.count %><button type="button" class="btn btn-info">変更</button>
 		</td>
-		<td width="50">1,100</td>
+		<td width="50"><%= (cart_item.product.price * 1.1).floor * cart_item.count.to_i %></td>
 		<td width="50">
 			<%=link_to "削除する",customers_cart_item_path(cart_item),class: "btn btn-danger",method: :delete, "data-confirm" => "本当に削除しますか？" %>
 		</td>
 　　　</tr>
+<% @sum += (cart_item.product.price * 1.1).floor * cart_item.count.to_i  %>
 <% end %>
 </table>
 </div>
@@ -36,7 +39,7 @@
 <table class="table table-bordered">
 	<tr>
 		<th>合計金額</th>
-		<td>1760</td>
+		<td><%= @sum %></td>
 	</tr>
 </table>
 </div>

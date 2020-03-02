@@ -31,7 +31,7 @@
 
 <main>
 	<h4>購入情報確認</h4>
-
+<%= @cart_items.each do |cart_item| %>
 <div class="table clearfix">
 	<div class="cart-table1">
 		<table class="table table-bordered">
@@ -44,20 +44,17 @@
 			<tr>
 				<td width="250">
 				<div class="cart-image"></div>
-		　　　	<a>イチゴのショートケーキ</a>
+		　　　	<a><%= cart_item.name %></a>
 	    		</td>
-				<td width="100">1,100</td>
-				<td width="80px">1</td>
-				<td width="100px">1100</td>
-　　　		</tr>
-			<tr>
-				<td width="250">
-				<div class="cart-image"></div>
-		　　　	<a>チョコレートケーキ</a>
-	    		</td>
-				<td width="150">1,000</td>
-				<td width="80">1</td>
-				<td width="150">1000</td>
+				<td width="100">
+					<%= (cart_item.price * 1.1).floor %>
+				</td>
+				<td width="80px">
+					<%= cart_item.count %>
+				</td>
+				<td width="100px">
+					<%= (cart_item.price * 1.1).floor * cart_item.count.to_i %>
+				</td>
 　　　		</tr>
 		</table>
 	</div>
@@ -79,19 +76,21 @@
 		</table>
 	</div>
 </div>
+
 <div class="cash">
 	<h3>支払方法</h3>
 	<div class="cashmeans">
-		<p>銀行振込</p>
+		<p><%= session[:order] %></p>
 	</div>
 </div>
 
 <div class="delivery-code">
 	<h3>お届け先</h3>
-	<p>鹿児島県志布志市志布志町志布志</p>
+	<p><%= session[:order] %></p>
 </div>
 
 <div class="botton">
 <%= link_to "購入を確定する",'', class:'btn btn-info' %>
 </div>
+<% end %>
 </main>

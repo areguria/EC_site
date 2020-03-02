@@ -2,10 +2,10 @@
 
 <h3>支払方法</h3>
 <%= form_with url:customers_orders_save_path do |f| %>
-  <%= f.radio_button :pay_status,1, checked: "checked" %>
+  <%= f.radio_button :pay_status,"銀行振込", checked: "checked" %>
   <%= f.label :銀行振込　%>
 
-  <%= f.radio_button :pay_status,0, checked: "checked" %>
+  <%= f.radio_button :pay_status,"クレジットカード", checked: "checked" %>
   <%= f.label :クレジットカード　%>
 
 <h3>お届け先</h3>

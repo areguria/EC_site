@@ -6,8 +6,8 @@ class Customers::CartItemsController < ApplicationController
 
   def create
     cart_item = CartItem.new(cart_item_params)
-    cart_item.customer_id = current_customer
-    cart_item.save
+    cart_item.customer_id  = current_customer.id
+    cart_item.save!
     redirect_to customers_cart_items_path(current_customer)
   end
     cart_items = CartItem.all

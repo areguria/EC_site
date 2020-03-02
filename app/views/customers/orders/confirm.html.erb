@@ -31,7 +31,8 @@
 
 <main>
 	<h4>購入情報確認</h4>
-<%= @cart_items.each do |cart_item| %>
+<%= form_with model: @cart_items,url:customers_orders_path,local: true do |f| %>
+<% @sum =0 %>
 <div class="table clearfix">
 	<div class="cart-table1">
 		<table class="table table-bordered">
@@ -41,24 +42,30 @@
 				<th>数量</th>
 				<th>小計</th>
 			</tr>
+
+			<% @cart_items.each do |cart_item| %>
 			<tr>
-				<td width="250">
-				<div class="cart-image"></div>
-		　　　	<a><%= cart_item.name %></a>
+				<td width="150">
+				  <div class="cart-image">
+				    <a><%= attachment_image_tag cart_item.product,:product_image,:fill,70,50 %></a>
+				  </div>
+		　　　	    <a><%= cart_item.product.name %></a>
 	    		</td>
-				<td width="100">
-					<%= (cart_item.price * 1.1).floor %>
+				<td width="50">
+					   <%= (cart_item.product.price.to_i * 1.1).floor %>
 				</td>
-				<td width="80px">
-					<%= cart_item.count %>
+				<td width="50px">
+					   <%= @cart_items.count %>
 				</td>
-				<td width="100px">
-					<%= (cart_item.price * 1.1).floor * cart_item.count.to_i %>
+				<td width="50px">
+					   <%= (cart_item.product.price.to_i * 1.1).floor * @cart_items.count.to_i %>
 				</td>
 　　　		</tr>
+
+                       <% @sum += (cart_item.product.price.to_i * 1.1).floor * @cart_items.count.to_i %>
+            <% end %>
 		</table>
 	</div>
-
 	<div class="cart-table2">
 		<table class="table table-bordered">
 			<tr>
@@ -67,30 +74,31 @@
 			</tr>
 			<tr>
 				<th>商品合計</th>
-				<td>2100</td>
+				<td><%= @sum %></td>
 			</tr>
 			<tr>
 				<th>請求金額</th>
-				<td>2900</td>
+				<td><%= @sum += 800 %></td>
 			</tr>
 		</table>
 	</div>
 </div>
-
 <div class="cash">
 	<h3>支払方法</h3>
-	<div class="cashmeans">
-		<p><%= session[:order] %></p>
-	</div>
+	  <div class="cashmeans">
+		<p><%= session[:order]["pay_status"] %></p>
+	  </div>
 </div>
 
 <div class="delivery-code">
 	<h3>お届け先</h3>
-	<p><%= session[:order] %></p>
+	  <p><%= session[:order]["zip_code"] %></p>
+	  <p><%= session[:order]["address"] %></p>
+	  <p><%= session[:order]["name"] %></p>
 </div>
 
 <div class="botton">
-<%= link_to "購入を確定する",'', class:'btn btn-info' %>
+  <%= f.submit "購入を確定する", class:'btn btn-info' %>
 </div>
 <% end %>
 </main>

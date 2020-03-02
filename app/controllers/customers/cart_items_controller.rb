@@ -5,6 +5,7 @@ class Customers::CartItemsController < ApplicationController
   end
 
   def create
+<<<<<<< HEAD
     cart_items = CartItem.all
     isExist = false
     id = 0
@@ -22,9 +23,9 @@ class Customers::CartItemsController < ApplicationController
       redirect_to customers_cart_items_path
     else
       cart_item = CartItem.new(cart_item_params)
-    cart_item.customer_id = current_customer.id
-    cart_item.save
-    redirect_to customers_cart_items_path(current_customer)
+      cart_item.customer_id = current_customer.id
+      cart_item.save!
+      redirect_to customers_cart_items_path(current_customer)
     end
 	end
 

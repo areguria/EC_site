@@ -5,7 +5,6 @@ class Customers::CartItemsController < ApplicationController
   end
 
   def create
-<<<<<<< HEAD
     cart_items = CartItem.all
     isExist = false
     id = 0

@@ -13,7 +13,9 @@
 
   <%= f.radio_button :address_status,0, checked: "checked" %>
   <%= f.label :ご自身の住所　%>
-  <%= current_customer.address %></br>
+  <%= f.current_customer :zip_code %></br>
+  <%= f.current_customer :address %>
+
 
 <% @delivery.each do |delivery| %>
   <%= f.radio_button :address_status,1, checked: "checked" %>

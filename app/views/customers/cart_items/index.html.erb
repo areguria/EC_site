@@ -1,3 +1,4 @@
+
 <h2>ショッピングカート</h2>
 
 <div class="delete-bottun">
@@ -38,25 +39,6 @@
       <% @sum +=  (cart_item.product.price.to_i * 1.1).floor * cart_item.count.to_i %>
     <% end %>
   </table>
-  
-	<% @sum = 0 %>
-	<% @cart_item.each do |cart_item| %>
-	<tr>
-		<td width="200">
-		<%= attachment_image_tag cart_item.product,:product_image,:fill,50,50, fallback:"no_image.jpg"%>
-		<%= cart_item.product.name %>
-	    </td>
-		<td width="80"><%= cart_item.product.price %></td>
-		<td width="50"><%= cart_item.count %><button type="button" class="btn btn-info">変更</button>
-		</td>
-		<td width="50"><%= (cart_item.product.price * 1.1).floor * cart_item.count.to_i %></td>
-		<td width="50">
-			<%=link_to "削除する",customers_cart_item_path(cart_item),class: "btn btn-danger",method: :delete, "data-confirm" => "本当に削除しますか？" %>
-		</td>
-　　　</tr>
-<% @sum += (cart_item.product.price * 1.1).floor * cart_item.count.to_i  %>
-<% end %>
-</table>
 </div>
 
 <%= link_to "買い物を続ける",customers_products_path, class: "btn btn-info" %>

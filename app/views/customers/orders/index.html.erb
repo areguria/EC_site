@@ -9,12 +9,13 @@
 		<th>ステータス</th>
 		<th>注文詳細</th>
 	</tr>
+	<%= @order.each do |order| %>
 	<tr>
-		<td>2019/11/15</td>
+		<td><%= order.created_at %></td>
 		<td>
-		  189-0043</br>
-		  東京都渋谷区館南1-23-50</br>
-		  山田花子
+		  <%= order.zipcode %></br>
+		  <%= order.address %></br>
+		  <%= order.name %>
 		</td>
 		<td>イチゴのガトーショコラ</td>
 		<td>2300円</td>

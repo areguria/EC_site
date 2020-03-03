@@ -24,9 +24,12 @@ Rails.application.routes.draw do
 
 
    namespace :customers do
+     post 'orders/save'
+     get 'orders/confirm'
      get 'customers/confirm'
      get 'orders/confirm'
      get 'orders/thanks'
+     delete 'cart_items/destroy_all'
    	 resources :orders,    only:[:new,:index,:show,:create]
    	 resources :products,  only:[:show,:index]
    	 resources :customers, only:[:show,:update,:edit,:destroy]

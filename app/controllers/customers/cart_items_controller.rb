@@ -5,11 +5,6 @@ class Customers::CartItemsController < ApplicationController
   end
 
   def create
-    cart_item = CartItem.new(cart_item_params)
-    cart_item.customer_id  = current_customer.id
-    cart_item.save!
-    redirect_to customers_cart_items_path(current_customer)
-  end
     cart_items = CartItem.all
     isExist = false
     id = 0
@@ -30,7 +25,7 @@ class Customers::CartItemsController < ApplicationController
     cart_item.save
     redirect_to customers_cart_items_path
     end
-	end
+  end
 
   def destroy
   	cart_item = CartItem.find(params[:id])
@@ -47,7 +42,6 @@ class Customers::CartItemsController < ApplicationController
     cart_item = CartItem.find(params[:id])
     cart_item.update(cart_item_params)
     redirect_to customers_cart_items_path(current_customer)
-
   end
 
   private

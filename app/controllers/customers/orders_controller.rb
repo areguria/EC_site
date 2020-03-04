@@ -13,25 +13,26 @@ class Customers::OrdersController < ApplicationController
 	end
 
 	def new
-		@deliveries = current_customer.deliveries
-		@delivery = Delivery.new
-
-	end
-
-	def create
-		redirect_to customers_orders_thanks_path
 		@delivery = current_customer.deliveries
-	end
+		@order = Order.new
 
+	end
 	def create
-		order = Order.new(order_params)
-		if order.save
-			order_records = current_customer.cart_items
-			if order_records.save
-			redirect_to customers_orders_thanks_path
-		  end
-	else
-			redirect_to customers_orders_confirm_path(current_customer)
+		if params[:status] == '1'
+		order_record = OrderRecord.new
+			order = current_customer.cart_item
+			order = Order.new
+			order_record.save
+			order.save
+		elsif params[:status] == '2'
+		elsif params[:status] == '3'
+			address = Address.new
+			address.zip_code = params[:order][:zip_code]
+		# if order.2ave
+			# redirect_to customers_orders_thanks_path
+		# else
+			# redirect_to customers_orders_confirm_path(current_customer)
+		# end
 		end
 	end
 
@@ -43,11 +44,6 @@ class Customers::OrdersController < ApplicationController
 
 	private
 	def order_params
-		params.permit(:name,:address,:zip_code,:pay_status,:address_status,:end_price)
+		params.permit(:name,:address,:zip_code,:pay_status,:address_status)
 	end
-
-	def order_records_params
-		params.require(:order_records).permit(:product_id,:order_id,:counts,:status)
-	end
-
 end

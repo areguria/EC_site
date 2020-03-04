@@ -1,10 +1,9 @@
 <h2>購入情報入力</h2>
-
 <h3>支払方法</h3>
-<%= form_with url:customers_orders_save_path do |f| %>
+
+<%= form_with model: @order, url:customers_orders_save_path do |f| %>
   <%= f.radio_button :pay_status,"銀行振込", checked: "checked" %>
   <%= f.label :銀行振込　%>
-
   <%= f.radio_button :pay_status,"クレジットカード", checked: "checked" %>
   <%= f.label :クレジットカード　%>
 
@@ -12,25 +11,26 @@
   <%= f.radio_button :address_status,0, checked: "checked" %>
   <%= f.label :ご自身の住所　%>
   <%= current_customer.address %></br>
-
-<% @delivery.each do |delivery| %>
+    <% @delivery.each do |delivery| %>
   <%= f.radio_button :address_status,1, checked: "checked" %>
   <%= f.label :登録済住所から選択　%>
-  <%= delivery.zip_code %>
-  <%= delivery.address %></br>
-<% end %>
+  <%= text_field_tag :name, delivery.name %>
+  <%= text_field_tag :zip_code, delivery.zip_code %>
+  <%= text_field_tag :address, delivery.address %>
+  <% end %>
+  </br>
+
+
   <%= f.radio_button :address_status,2, checked: "checked" %>
   <%= f.label :新しいお届け先　%></br>
-<%= f.label :郵便番号 %>
-<%= f.number_field :zip_code ,class: "form" %>
+  <%= f.label :郵便番号 %>
+  <%= f.text_field :zip_code ,class: "form" %>
 <a>ハイフンなし</a></br>
-
   <%= f.label :住所 %>
   <%= f.text_field :address,class: "form" %></br>
-
   <%= f.label :宛名 %>
   <%= f.text_field :name ,class: "form" %>
-  <% end %>
+
 <div class="go-button2">
   <%= f.submit "確認画面へ進む",class: "btn btn-info" %>
 </div>

@@ -6,7 +6,18 @@ class Customers::OrdersController < ApplicationController
 
   def save
   	session[:order] = order_params
-  	redirect_to customers_orders_confirm_path(current_customer)
+  if session[:order]["address_status"] == "0"
+  		session[:order]["address"] = current_customer.address
+  		session[:order]["zip_code"] = current_customer.zip_code
+  		session[:order]["name"] = current_customer.name_first
+  elsif session[:order]["address_status"] == "1"
+  	delivery = Delivery.find(session[:order][:delivery_id])
+   		session[:order]["address"] = delivery.address
+  		session[:order]["zip_code"] = delivery.zip_code
+  		session[:order]["name"] = delivery.name
+  else session[:order]["address_status"] == "2"
+  	end
+  	redirect_to customers_orders_confirm_path
   end
 
 	def thanks
@@ -14,6 +25,7 @@ class Customers::OrdersController < ApplicationController
 
 	def new
 		@delivery = current_customer.deliveries
+		@customer = current_customer
 	end
 
 	def create
@@ -38,11 +50,10 @@ class Customers::OrdersController < ApplicationController
 			order_record.save!
 	  end
 			redirect_to customers_orders_thanks_path
-	end
+		end
 
 	def index
 		@orders = current_customer.orders
-
 	end
 
 	def show
@@ -51,9 +62,7 @@ class Customers::OrdersController < ApplicationController
 
 
 	private
-
 	def order_params
-		params.permit(:name,:address,:zip_code,:pay_status,:address_status)
+		params.permit(:name,:address,:zip_code,:pay_status,:address_status,:delivery_id)
 	end
-
 end

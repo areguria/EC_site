@@ -17,6 +17,8 @@ Rails.application.routes.draw do
    namespace :admins do
      resources :orders,    only:[:index,:show,:update]
      get 'orders/top'
+     patch 'orders/order_records/:id', to: 'orders#update2'
+     put 'orders/order_records/:id', to: 'orders#update2'
      resources :categories, only:[:index,:create,:edit,:update,:destroy]
      resources :products, only:[:index,:new,:show,:create,:edit,:update,:destroy]
      resources :customers, only:[:index,:edit,:show,:update]

@@ -14,11 +14,15 @@
 		<td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
 		<td>
 		  <%= order.zip_code %></br>
-		  <%= order.adress %></br>
-		  <%= order.name %>
+		  <%= order.address %></br>
+          <%= order.name %>
+	    </td>
+	    <td>
+	    <% order.order_records.each do |order_record| %>
+			<%= order_record.product.name %> <br>
+		<% end %>
 		</td>
-		<td>order.product_id</td>
-		<td>order.product_id</td>
+		<td><%= order.order_records.sum(:end_price) %></td>
 		<td>入金確認</td>
 		<td>
 		   <%=link_to "表示する",customers_order_path(order),class: "btn btn-info" %>

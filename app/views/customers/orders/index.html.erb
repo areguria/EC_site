@@ -17,11 +17,12 @@
 		  <%= order.address %></br>
 		  <%= order.name %>
 		</td>
-		<td>イチゴのガトーショコラ</td>
-		<td>2300円</td>
+		<td>order.product_id</td>
+		<td>order.product_id</td>
 		<td>入金確認</td>
 		<td>
-		   <%=link_to "表示する",'#',class: "btn btn-info" %>
+		   <%=link_to "表示する",customers_order_path(order),class: "btn btn-info" %>
 		</td>
 	</tr>
+	<% end %>
 </table>

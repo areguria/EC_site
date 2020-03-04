@@ -6,7 +6,18 @@ class Customers::OrdersController < ApplicationController
 
   def save
   	session[:order] = order_params
-  	redirect_to customers_orders_confirm_path(current_customer)
+  if session[:order]["address_status"] == "0"
+  		session[:order]["address"] = current_customer.address
+  		session[:order]["zip_code"] = current_customer.zip_code
+  		session[:order]["name"] = current_customer.name_first
+  elsif session[:order]["address_status"] == "1"
+  	delivery = Delivery.find(session[:order][:delivery_id])
+   		session[:order]["address"] = delivery.address
+  		session[:order]["zip_code"] = delivery.zip_code
+  		session[:order]["name"] = delivery.name
+  else session[:order]["address_status"] == "2"
+  	end
+  	redirect_to customers_orders_confirm_path
   end
 
 	def thanks
@@ -14,36 +25,44 @@ class Customers::OrdersController < ApplicationController
 
 	def new
 		@delivery = current_customer.deliveries
-		@order = Order.new
+		@customer = current_customer
+	end
 
-	end
 	def create
-		if params[:status] == '1'
-		order_record = OrderRecord.new
-			order = current_customer.cart_item
-			order = Order.new
-			order_record.save
-			order.save
-		elsif params[:status] == '2'
-		elsif params[:status] == '3'
-			address = Address.new
-			address.zip_code = params[:order][:zip_code]
-		# if order.2ave
-			# redirect_to customers_orders_thanks_path
-		# else
-			# redirect_to customers_orders_confirm_path(current_customer)
-		# end
+		order = Order.new(
+			pay_status: session[:order]["pay_status"],
+			status:     session[:order]["status"],
+			adress:     session[:order]["address"],
+			zip_code:   session[:order]["zip_code"],
+			name:       session[:order]["name"]
+			)
+		order.customer_id = current_customer.id
+		order.save!
+
+		cart_items = current_customer.cart_items
+		cart_items.each do |item|
+			order_record = OrderRecord.new(
+			order_id:   order.id,
+			product_id: item.product_id,
+			counts:     item.count,
+			end_price: item.product.price
+			)
+			order_record.save!
+	  end
+			redirect_to customers_orders_thanks_path
 		end
-	end
 
 	def index
+		@orders = current_customer.orders
 	end
 
 	def show
+	  @order = Order.find(params[:id])
 	end
+
 
 	private
 	def order_params
-		params.permit(:name,:address,:zip_code,:pay_status,:address_status)
+		params.permit(:name,:address,:zip_code,:pay_status,:address_status,:delivery_id)
 	end
 end

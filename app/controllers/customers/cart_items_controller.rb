@@ -25,7 +25,7 @@ class Customers::CartItemsController < ApplicationController
     cart_item.save
     redirect_to customers_cart_items_path
     end
-	end
+  end
 
   def destroy
   	cart_item = CartItem.find(params[:id])
@@ -42,7 +42,6 @@ class Customers::CartItemsController < ApplicationController
     cart_item = CartItem.find(params[:id])
     cart_item.update(cart_item_params)
     redirect_to customers_cart_items_path(current_customer)
-
   end
 
   private

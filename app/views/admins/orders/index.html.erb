@@ -7,20 +7,29 @@
 		<th>注文個数</th>
 		<th>注文ステータス</th>
 	</tr>
+
 	<% @orders.each do |order| %>
-	<%= link_to admins_order_path(order) do %>
 	<tr>
 		<td>
+			<%= link_to admins_order_path(order) do %>
 			<%= order.created_at.strftime("%Y-%m-%d %H:%M") %>
+			<% end %>
 		</td>
 		<td>
-			<%= order.customer_id %>
+			<%= order.customer.name_last %>
+			<%= order.customer.name_first %>
 		</td>
-		<td></td>
+		<td>
+			<% @sum = 0 %>
+			<% order.order_records.each do |order_records| %>
+			<% order_records.count %>
+			<% @sum += order_records.count.to_i %>
+			<% end %>
+			<%= @sum %>
+		</td>
 		<td>
 			<%= order.status %>
 		</td>
 	</tr>
-	<% end %>
 	<% end %>
 </table>

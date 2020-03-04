@@ -32,7 +32,7 @@ class Customers::OrdersController < ApplicationController
 		order = Order.new(
 			pay_status: session[:order]["pay_status"],
 			status:     session[:order]["status"],
-			adress:     session[:order]["address"],
+			address:     session[:order]["address"],
 			zip_code:   session[:order]["zip_code"],
 			name:       session[:order]["name"]
 			)
@@ -44,7 +44,7 @@ class Customers::OrdersController < ApplicationController
 			order_record = OrderRecord.new(
 			order_id:   order.id,
 			product_id: item.product_id,
-			counts:     item.count,
+			count:     item.count,
 			end_price: item.product.price
 			)
 			order_record.save!

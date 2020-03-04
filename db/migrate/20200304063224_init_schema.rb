@@ -58,21 +58,23 @@ class InitSchema < ActiveRecord::Migration[5.2]
     create_table "order_records" do |t|
       t.integer "product_id"
       t.integer "order_id"
-      t.integer "counts"
       t.integer "status"
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
+      t.datetime "deleted_at"
+      t.integer "end_price"
+      t.integer "count"
     end
     create_table "orders" do |t|
       t.integer "pay_status", default: 0
       t.integer "status"
-      t.integer "end_price"
       t.string "zip_code"
-      t.string "adress"
       t.string "name"
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
       t.integer "customer_id"
+      t.datetime "deleted_at"
+      t.string "address"
     end
     create_table "products" do |t|
       t.integer "category_id"

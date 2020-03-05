@@ -4,6 +4,6 @@ class Product < ApplicationRecord
 	belongs_to :category
 	attachment :product_image
 	acts_as_paranoid
-	validates :name,:introduction,:product_image,:price, presence: true
-	validates :introduction, length:{minimum: 25}
+	# validates :name,:introduction,:product_image,:price, presence: true
+	# validates :introduction, length:{minimum: 25}
 end

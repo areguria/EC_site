@@ -15,8 +15,8 @@
     </li>
     <li>
       <%= link_to customers_customer_path(current_customer) do %>
-      <a><%= current_customer.name_last %>
-         <%= current_customer.name_last %> さんのページ</a>
+      <%= current_customer.name_last %>
+      <%= current_customer.name_first %>さんのページ
       <% end %>
     </li>
     <li>

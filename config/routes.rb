@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   	registrations: 'customers/registrations'
   }
    namespace :admins do
+     root 'orders#top'
      resources :orders,    only:[:index,:show,:update]
      get 'orders/top'
      patch 'orders/order_records/:id', to: 'orders#update2'
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
 
 
    namespace :customers do
+     root 'products#top'
      post 'orders/save'
      get 'orders/confirm'
      get 'customers/confirm'

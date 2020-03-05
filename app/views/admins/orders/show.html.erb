@@ -20,7 +20,7 @@
 		<td><%= @order.pay_status %></td>
 	</tr>
 
-	<%= form_with model:@order,url:admins_order_path,local: true do |f| %>
+	<%= form_with model:@order,url:admins_order_path,remote: false do |f| %>
 	<tr>
 		<th>注文ステータス</th>
 		<td>

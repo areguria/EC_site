@@ -9,9 +9,16 @@ class Customers::ProductsController < ApplicationController
 	end
 	PER = 8
 	def index
-		@products = Product.page(params[:page]).per(PER)
-		@categories = Category.all
-		@allcount = Product.all.count
+		category_id = Category.find(params[:category_id])
+		if params[:category_id]
+			@products = @category.product.all.per(PER)
+			@allcount = @category.product.count
+			@categories = Category.all
+		else
+			@products = Product.page(params[:page]).per(PER)
+			@categories = Category.all
+			@allcount = Product.all.count
+		end
 	end
 
 	private

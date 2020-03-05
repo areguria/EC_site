@@ -1,4 +1,5 @@
 class Admins::CustomersController < ApplicationController
+	before_action :authenticate_admin!
 	def index
 		@customer = Customer.all
 	end
@@ -11,6 +12,7 @@ class Admins::CustomersController < ApplicationController
 		@customer = Customer.find(params[:id])
 	end
 	def update
+		binding.pry
 		customer = Customer.find(params[:id])
 		customer.update(customer_params)
 		redirect_to admins_customers_path

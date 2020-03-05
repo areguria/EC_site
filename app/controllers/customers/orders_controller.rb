@@ -21,6 +21,7 @@ class Customers::OrdersController < ApplicationController
   end
 
 	def thanks
+		customers_cart_items_destroy_all_path
 	end
 
 	def new
@@ -49,6 +50,7 @@ class Customers::OrdersController < ApplicationController
 			)
 			order_record.save!
 	  end
+	  current_customer.cart_items.destroy_all
 			redirect_to customers_orders_thanks_path
 		end
 

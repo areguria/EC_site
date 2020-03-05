@@ -37,7 +37,11 @@
 				<h2>ジャンル検索</h2>
 			</div>
 			  <% @categories.each do |category| %>
-			<h3><%= category.name %></h3>
+			<h3>
+				<%= link_to customers_products_path,category_id: category.id do %>
+				<%= category.name %>
+				</h3>
+			  <% end %>
 			  <% end %>
 	  </div>
   </div>

@@ -15,7 +15,12 @@
 			<%= link_to customer.name_first, admins_customer_path(customer) %>
 		</td>
 		<td><%= customer.email %></td>
-		<td><%= customer.status %></td>
+
+			<% if customer.status %>
+				<td>有効</td>
+			<% else %>
+				<td>無効</td>
+			<% end %>
 	</tr>
 	<% end %>
 </table>

@@ -2,12 +2,14 @@
 <h2>ショッピングカート</h2>
 
 <div class="delete-bottun">
-
-<%=link_to "カートを空にする",customers_cart_items_destroy_all_path,class: "btn btn-danger",method: :delete, "data-confirm" => "本当に削除しますか？" %>
+<%=link_to "カートを空にする",'',class: "btn btn-danger",method: :delete, "data-confirm" => "本当に削除しますか？" %>
 </div>
+
 <div class="cart-table1">
   <table class="table table-bordered">
 
+<div class="cart-table1">
+<table class="table table-bordered">
 	<tr>
 		<th>商品名</th>
 		<th>単価（税込）</th>
@@ -15,29 +17,25 @@
 		<th>小計</th>
 		<th></th>
 	</tr>
-<% @sum = 0 %>
+
+	<% @sum = 0 %>
 	<% @cart_item.each do |cart_item| %>
 	<tr>
 		<td width="200">
-		<%= attachment_image_tag cart_item.product,:product_image,:fill,50,50, fallback: "no_image.jpg" %><%= cart_item.product.name %>
+		<%= attachment_image_tag cart_item.product,:product_image,:fill,50,50, fallback:"no_image.jpg"%>
+		<%= cart_item.product.name %>
 	    </td>
-		<td width="80"><%= (cart_item.product.price.to_i * 1.1).floor() %></td>
-
-		<%= form_for cart_item, url:customers_cart_item_path(cart_item) do |f| %>
-		<td width="50">
-			<%= f.number_field :count %>
-			<%= f.submit "変更",class: "btn btn-info" %>
+		<td width="80"><%= cart_item.product.price %></td>
+		<td width="50"><%= cart_item.count %><button type="button" class="btn btn-info">変更</button>
 		</td>
-		<% end %>
-
-		<td width="50"><%= (cart_item.product.price.to_i * 1.1).floor * cart_item.count.to_i %></td>
+		<td width="50"><%= (cart_item.product.price * 1.1).floor * cart_item.count.to_i %></td>
 		<td width="50">
 			<%=link_to "削除する",customers_cart_item_path(cart_item),class: "btn btn-danger",method: :delete, "data-confirm" => "本当に削除しますか？" %>
 		</td>
-　　 </tr>
-      <% @sum +=  (cart_item.product.price.to_i * 1.1).floor * cart_item.count.to_i %>
-    <% end %>
-  </table>
+　　　</tr>
+<% @sum += (cart_item.product.price * 1.1).floor * cart_item.count.to_i  %>
+<% end %>
+</table>
 </div>
 
 <%= link_to "買い物を続ける",customers_products_path, class: "btn btn-info" %>
@@ -47,7 +45,7 @@
 	<tr>
 		<th>合計金額</th>
 		<td><%= @sum %></td>
-  </tr>
+	</tr>
 </table>
 </div>
 

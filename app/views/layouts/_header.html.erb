@@ -14,9 +14,9 @@
       <%= link_to 'カート',customers_cart_items_path(current_customer.id) %>
     </li>
     <li>
-      <%= link_to customers_customer_path(current_customer.id) do %>
+      <%= link_to customers_customer_path(current_customer) do %>
       <%= current_customer.name_last %>
-      <%= current_customer.name_first %>野郎
+      <%= current_customer.name_first %>さんのページ
       <% end %>
     </li>
     <li>

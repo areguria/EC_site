@@ -14,6 +14,7 @@ class Customers::CartItemsController < ApplicationController
         id = cart_item.id
       end
     end
+
     if isExist
       cart_item = CartItem.find(id)
       sum = cart_item.count.to_i + cart_item_params[:count].to_i
@@ -21,9 +22,9 @@ class Customers::CartItemsController < ApplicationController
       redirect_to customers_cart_items_path
     else
       cart_item = CartItem.new(cart_item_params)
-    cart_item.customer_id = current_customer.id
-    cart_item.save
-    redirect_to customers_cart_items_path
+      cart_item.customer_id = current_customer.id
+      cart_item.save!
+      redirect_to customers_cart_items_path(current_customer)
     end
   end
 

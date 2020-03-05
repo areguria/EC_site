@@ -8,8 +8,4 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   enum status:{有効:0,無効:1}
   acts_as_paranoid
-  validates :name_last,:name_first,:name_last_kana,:name_first_kana,
-  :address,:zip_code,:phone_number,:email, presence: true
-  
-
 end

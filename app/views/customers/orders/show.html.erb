@@ -16,7 +16,7 @@
 		<th>配送先</th>
 		<td width="300">
 		  <%= @order.zip_code %></br>
-		  <%= @order.adress %></br>
+		  <%= @order.address %></br>
 		  <%= @order.name %>
 		</td>
 	</tr>
@@ -28,20 +28,23 @@
 	</tr>
 	<tr>
 		<th>ステータス</th>
-		<td width="300">発送準備中</td>
+		<td width="300"></td>
 	</tr>
   </table>
   </div>
  </div>
-
+<% @sum = 0 %>
+<% @order.order_records.each do |order_record| %>
+	<% @sum += ((order_record.end_price.to_i) * 1.1.floor) * order_record.count.to_i %>
+<% end %>
  <div class="col-xs-5">
   <div class="order-show2">
   <h4>請求情報</h4>
-
+ 
   <table class="table-bordered">
 	<tr>
 		<th width="100">商品合計</th>
-		<td width="100">1500</td>
+		<td width="100"><%= @sum %></td>
 	</tr>
 	<tr>
 		<th width="100">配送料</th>
@@ -49,7 +52,7 @@
 	</tr>
 	<tr>
 		<th width="100">ご請求金額</th>
-		<td width="100">2300</td>
+		<td width="100"><%= @sum += 800 %></td>
 	</tr>
   </table>
   </div>
@@ -65,11 +68,23 @@
 		<th>個数</th>
 		<th>小計</th>
 	</tr>
+
+	<% @order.order_records.each do |order_record| %>
 	<tr>
-		<td width="300">イチゴのショートケーキ</td>
-		<td width="100">500</td>
-		<td width="100">2</td>
-		<td width="100">1000</td>
+		<td width="300">
+		    <%= order_record.product.name %>
+		</td>
+		<td width="100">
+		    <%= (order_record.end_price.to_i) * 1.1.floor %>
+		</td>
+		<td width="100">
+			<%= order_record.count.to_i %>
+		</td>
+		<td width="100">
+			<%= ((order_record.end_price.to_i) * 1.1.floor) * order_record.count.to_i %>
+		</td>
 	</tr>
+	<% @sum += ((order_record.end_price.to_i) * 1.1.floor) * order_record.count.to_i %>
+	<% end %>
 </table>
 </div>

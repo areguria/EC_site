@@ -3,13 +3,15 @@
 <table>
 	<tr>
 		<th>購入者</th>
-		<td><%= @order.customer_id %></td>
+		<td><%= @order.customer.name_last %>
+			<%= @order.customer.name_first %>
+		</td>
 	</tr>
 	<tr>
 		<th>配送先</th>
 		<td>
 		  <%= @order.zip_code %>
-		  <%= @order.adress %></br>
+		  <%= @order.address %></br>
 		  <%= @order.name %>
 		</td>
 	</tr>
@@ -17,17 +19,18 @@
 		<th>支払方法</th>
 		<td><%= @order.pay_status %></td>
 	</tr>
-	<%=form_with model:@order,url:admins_order_path,local: true do |f| %>
+
+	<%= form_with model:@order,url:admins_order_path,local: true do |f| %>
 	<tr>
 		<th>注文ステータス</th>
 		<td>
 			<%= f.select :status, Order.statuses.keys.to_a, {} %>
-
 			<%= f.submit "更新",class: "btn btn-info" %>
-    <% end %>
 	    </td>
 	</tr>
+	 <% end %>
 </table>
+
 <div class="admin-order-show2">
 <table class="table table-bordered">
 	<tr>
@@ -37,18 +40,22 @@
 		<th>小計</th>
 		<th>製作ステータス</th>
 	</tr>
+
+	<% @order.order_records.each do |order_record| %>
 	<tr>
-		<td>
-			<%= @order %>
-		</td>
-		<td><%= %></td>
-		<td><%= %></td>
-		<td><%= %></td>
+		<td><%= order_record.product.name %></td>
+		<td><%= order_record.end_price * 1.1.floor %></td>
+		<td><%= order_record.count %></td>
+		<td><%= (order_record.end_price * 1.1.floor.to_i) * order_record.count.to_i %></td>
+
+	  <%= form_with model:order_record,url:admins_path(order_record),local: true do |f| %>
 		<td>
 			<%= f.select :status, OrderRecord.statuses.keys.to_a, {} %>
 			<%= f.submit "更新",class: "btn btn-info" %>
 		</td>
+	  <% end %>
 	</tr>
+	<% end %>
 </table>
 </div>
 

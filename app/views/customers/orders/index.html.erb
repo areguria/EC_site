@@ -13,12 +13,16 @@
 	<tr>
 		<td><%= order.created_at %></td>
 		<td>
-		  <%= order.zipcode %></br>
+		  <%= order.zip_code %></br>
 		  <%= order.address %></br>
-		  <%= order.name %>
+          <%= order.name %>
+	    </td>
+	    <td>
+	    <% order.order_records.each do |order_record| %>
+			<%= order_record.product.name %> <br>
+		<% end %>
 		</td>
-		<td>order.product_id</td>
-		<td>order.product_id</td>
+		<td><%= order.order_records.sum(:end_price) %></td>
 		<td>入金確認</td>
 		<td>
 		   <%=link_to "表示する",customers_order_path(order),class: "btn btn-info" %>

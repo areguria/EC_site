@@ -34,7 +34,7 @@ class Customers::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    CartItem.destroy_all
+    current_customer.cart_items.destroy_all
     redirect_to customers_cart_items_path(current_customer)
   end
 

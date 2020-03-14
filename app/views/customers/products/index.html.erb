@@ -38,10 +38,8 @@
 			</div>
 			  <% @categories.each do |category| %>
 			<h3>
-				<%= link_to customers_products_path,category_id: category.id do %>
-				<%= category.name %>
-				</h3>
-			  <% end %>
+				<%= link_to category.name, customers_products_path(category_id: category.id), category_id: category.id %>
+			</h3>
 			  <% end %>
 	  </div>
   </div>

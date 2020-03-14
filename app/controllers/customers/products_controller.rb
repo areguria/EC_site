@@ -9,11 +9,12 @@ class Customers::ProductsController < ApplicationController
 	end
 	PER = 8
 	def index
-		category_id = Category.find(params[:category_id])
 		if params[:category_id]
-			@products = @category.product.all.per(PER)
-			@allcount = @category.product.count
+			@category = Category.find(params[:category_id])
+			@products = @category.products.all
 			@categories = Category.all
+			@allcount = @category.products.all.count
+			@products = @category.products.page(params[:page]).per(PER)
 		else
 			@products = Product.page(params[:page]).per(PER)
 			@categories = Category.all
@@ -26,5 +27,4 @@ class Customers::ProductsController < ApplicationController
 	def product_params
 		 params.require(:product).permit(:name,:introduction,:category_id,:product_image,:status,:price)
  	end
-
 end

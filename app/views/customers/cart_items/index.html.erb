@@ -20,9 +20,13 @@
 		<%= attachment_image_tag cart_item.product,:product_image,:fill,50,50, fallback:"no_image.jpg"%>
 		<%= cart_item.product.name %>
 	    </td>
-		<td width="80"><%= cart_item.product.price %></td>
-		<td width="50"><%= cart_item.count %><button type="button" class="btn btn-info">変更</button>
-		</td>
+		<td width="80"><%= (cart_item.product.price.to_i * 1.1).floor() %></td>
+
+		<%= form_for cart_item, url:customers_cart_item_path(cart_item) do |f| %>
+		<td width="50">
+			<%= f.number_field :count %>
+			<%= f.submit "変更",class: "btn btn-info" %>
+			<% end %>
 		<td width="50"><%= (cart_item.product.price * 1.1).floor * cart_item.count.to_i %></td>
 		<td width="50">
 			<%=link_to "削除する",customers_cart_item_path(cart_item),class: "btn btn-danger",method: :delete, "data-confirm" => "本当に削除しますか？" %>

@@ -48,7 +48,7 @@
 		<td><%= order_record.count %></td>
 		<td><%= (order_record.end_price * 1.1.floor.to_i) * order_record.count.to_i %></td>
 
-	  <%= form_with model:order_record,url:admins_path(order_record),local: true do |f| %>
+	  <%= form_with model:order_record,url:admins_path(order_record),remote: false do |f| %>
 		<td>
 			<%= f.select :status, OrderRecord.statuses.keys.to_a, {} %>
 			<%= f.submit "更新",class: "btn btn-info" %>

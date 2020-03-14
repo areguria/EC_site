@@ -20,7 +20,13 @@
 	<tr>
 		<th>顧客ID</th>
 		<td><%= @customer.id %>
-			<span class="bg-primary"><%= @customer.status%></span>
+			<span class="bg-primary">
+				<% if @customer.status %>
+				 有効会員
+				<% else %>
+				 無効会員
+				<% end %>
+			</span>
 		</td>
 	</tr>
 	<tr>

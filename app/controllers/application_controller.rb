@@ -29,13 +29,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-  	if current_customer
   	  flash[:notice] = "ご利用ありがとうございました"
   	  customers_root_path
-  	else
-  	  flash[:notice] = "またお待ちしております！管理者様"
-  	  customers_root_path
-  	end
   end
 
 
